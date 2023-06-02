@@ -24,7 +24,7 @@ const userSchema = new Schema({
         required: true,
      },
      zipcode: {
-        type: Number,
+        type: Int,
         required: true,
      },
      phone: {
