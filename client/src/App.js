@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
+
+//import components and pages for the app to render
 import Header from './components/Header'
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import NoMatch from './pages/NotFound';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -43,7 +46,6 @@ function App() {
         <div>
           <StoreProvider>
             <Header />
-
           <Routes>              
             <Route 
               path="/" 
