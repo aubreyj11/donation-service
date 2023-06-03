@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
+import AuthService from "./utils/auth";
 
 //import components and pages for the app to render
 import Header from './components/Header'
@@ -12,7 +13,7 @@ import Signup from './pages/Signup';
 // import Charities from './pages/Charities';
 import Profile from './pages/Profile';
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -41,6 +42,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const loggedIn = AuthService.loggedIn();
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -59,7 +62,9 @@ function App() {
             /> */}
             <Route
               path="/profile"
-              element={<Profile />}
+              element= {
+                loggedIn ? <Profile /> : <Navigate replace to ={"/login"}/>
+              }
             />
             <Route 
               path="/login" 
