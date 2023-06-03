@@ -24,11 +24,13 @@ const userSchema = new Schema({
         required: true,
      },
      zipcode: {
-        type: Int,
+        type: Number,
         required: true,
      },
      phone: {
-        type: Text,
+        type: String,
+        minLength: 10,
+        maxLength: 12,
      }
 });
 
