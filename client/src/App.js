@@ -43,7 +43,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
+        <div className='App'>
           <StoreProvider>
             <Header />
           <Routes>              
@@ -69,6 +69,10 @@ function App() {
         </div>
       </Router>    
     </ApolloProvider>
+    // <>
+    // <Header />
+    // <Footer />
+    // </>
   );
 }
 
