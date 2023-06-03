@@ -9,6 +9,8 @@ import Home from './pages/Home';
 import NoMatch from './pages/NotFound';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+// import Charities from './pages/Charities';
+import Profile from './pages/Profile';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
@@ -50,6 +52,14 @@ function App() {
             <Route 
               path="/" 
               element={<Home />} 
+            />
+            {/* <Route
+              path="/charities"
+              element={<Charities />}
+            /> */}
+            <Route
+              path="/profile"
+              element={<Profile />}
             />
             <Route 
               path="/login" 

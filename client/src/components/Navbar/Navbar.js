@@ -17,21 +17,27 @@ export default class Navbar extends Component {
                     active={activeItem === 'home'}
                     onClick={this.handleItemClick}
                 >
+                    <Link to="/">
                     Home
+                    </Link>
                 </Menu.Item>
                 <Menu.Item 
                     name='charities'
                     active={activeItem === 'charities'}
                     onClick={this.handleItemClick}
                 >
+                    <Link to="/charities">
                     Charities
+                    </Link>
                 </Menu.Item>
                 <Menu.Item
                     name='Profile'
                     active={activeItem === 'Profile'}
                     onClick={this.handleItemClick}
                 >
+                    <Link to="/profile">
                     Profile
+                    </Link>
                 </Menu.Item>
                 <Menu.Item 
                     name='login'

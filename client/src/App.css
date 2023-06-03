@@ -40,4 +40,21 @@
   }
 }
 
+.footer-ctn {
+  /* margin-top: 0;
+  margin-bottom: -10px;
+  height: 100%;padding-bottom: 5px; */
+  text-align: center;
+}
 
+.git-ic{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+#topLink {
+  position: absolute;
+  right: 120px;
+}
