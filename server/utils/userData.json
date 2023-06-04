@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Downtown Donuts",
+        "email": "donuts@test.com",
+        "password": "password1234",
+        "address": "1234 Birch St",
+        "city": "Brea",
+        "zipcode": "92821",
+        "phone": "7145820555"
+    },
+    {
+        "name": "Bob's Diner",
+        "email": "diner@test.com",
+        "password": "password1234",
+        "address": "529 S Harbor Blvd",
+        "city": "Fullerton",
+        "zipcode": "90621",
+        "phone": "5622030112"
+    },
+    {
+        "name": "Rustic Cafe",
+        "email": "cafe@test.com",
+        "password": "password1234",
+        "address": "5432 Sycamore Drive",
+        "city": "Orange",
+        "zipcode": "92867",
+        "phone": "(714) 345-6789"
+    },
+    {
+        "name": "Tony's Pizza",
+        "email": "pizza@test.com",
+        "password": "password1234",
+        "address": "9101 Pine Lane",
+        "city": "Huntington Beach",
+        "zipcode": "92647",
+        "phone": "(562) 555-2468"
+    },
+    {
+        "name": "Fresh Grill",
+        "email": "fresh@test.com",
+        "password": "password1234",
+        "address": "5678 Oak Street",
+        "city": "Irvine",
+        "zipcode": "92618",
+        "phone": "(949) 555-9753"
+    }
+]

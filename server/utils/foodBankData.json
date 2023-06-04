@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Second Harvest Food Bank of Orange County",
+        "address": "8014 Marine Way",
+        "city": "Irvine",
+        "state": "CA",
+        "zip": "92618",
+        "phone": "949-653-2900",
+        "url": "http://feedoc.org/"
+    },
+    {
+        "name": "Community Action Partnership of Orange County Food Bank",
+        "address": "11870 Monarch St.",
+        "city": "Garden Grove",
+        "state": "CA",
+        "zip": "92841",
+        "phone": "714-897-6670",
+        "url": "http://ocfoodbank.org/"
+    },
+    {
+        "name": "Mary's Kitchen",
+        "address": "790 East Debra Lane",
+        "city": "Anaheim",
+        "state": "CA",
+        "zip": "92805",
+        "phone": "714-633-0444",
+        "url": "http://maryskitchen.org/"
+    },
+    {
+        "name": "Friendly Center",
+        "address": "147 West Rose Avenue",
+        "city": "Orange",
+        "state": "CA",
+        "zip": "92867",
+        "phone": "714-771-5300",
+        "url": "http://friendlycenter.org/"
+    }
+]
