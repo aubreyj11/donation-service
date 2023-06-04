@@ -1,5 +1,9 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   text-align: center;
+  justify-content: space-between;
 }
 
 .App-logo {
@@ -35,4 +39,41 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.footer-ctn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+.git-ic{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+#topLink {
+  position: absolute;
+  right: 120px;
+}
+
+
+.home-h1 {
+  font-weight: bolder;
+  font-size: 6.5em;
+  width: 500px;
+  
+}
+
+.home-text {
+  font-size: 2rem;
+  width: 1300px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.home-img {
+  display: none;
 }

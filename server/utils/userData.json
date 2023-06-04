@@ -6,7 +6,7 @@
         "address": "1234 Birch St",
         "city": "Brea",
         "zipcode": "92821",
-        "phone": "7145820555"
+        "phone": "714-582-0555"
     },
     {
         "name": "Bob's Diner",
@@ -15,7 +15,7 @@
         "address": "529 S Harbor Blvd",
         "city": "Fullerton",
         "zipcode": "90621",
-        "phone": "5622030112"
+        "phone": "562-203-0112"
     },
     {
         "name": "Rustic Cafe",
@@ -24,7 +24,7 @@
         "address": "5432 Sycamore Drive",
         "city": "Orange",
         "zipcode": "92867",
-        "phone": "(714) 345-6789"
+        "phone": "714-345-6789"
     },
     {
         "name": "Tony's Pizza",
@@ -33,7 +33,7 @@
         "address": "9101 Pine Lane",
         "city": "Huntington Beach",
         "zipcode": "92647",
-        "phone": "(562) 555-2468"
+        "phone": "562-555-2468"
     },
     {
         "name": "Fresh Grill",
@@ -42,6 +42,6 @@
         "address": "5678 Oak Street",
         "city": "Irvine",
         "zipcode": "92618",
-        "phone": "(949) 555-9753"
+        "phone": "949-555-9753"
     }
 ]
