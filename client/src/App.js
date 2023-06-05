@@ -7,7 +7,7 @@ import AuthService from "./utils/auth";
 import Header from './components/Header'
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import NoMatch from './pages/NotFound';
+import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 // import Charities from './pages/Charities';
@@ -62,7 +62,7 @@ function App() {
             /> */}
             <Route
               path="/profile"
-              element= {
+              element= {                 
                 loggedIn ? <Profile /> : <Navigate replace to ={"/login"}/>
               }
             />
@@ -76,7 +76,7 @@ function App() {
             />
             <Route 
               path="*" 
-              element={<NoMatch />} 
+              element={<NotFound />} 
             />
           </Routes>
             <Footer />
@@ -84,10 +84,6 @@ function App() {
         </div>
       </Router>    
     </ApolloProvider>
-    // <>
-    // <Header />
-    // <Footer />
-    // </>
   );
 }
 
