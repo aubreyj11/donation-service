@@ -25,7 +25,7 @@ const resolvers = {
     
           return { session: session.id };
         },
-        user: async (parent, args, context) => {
+        getUser: async (parent, args, context) => {
           if (context.user) {
             const user = await User.findById(context.user._id);   
             return user;
@@ -35,8 +35,8 @@ const resolvers = {
         }
       },
     Mutation: {
-        addUser: async (parents, args) => {
-          const user = await User.create(args);
+        addUser: async (parents, { name, email, password, address, city, zipcode, phone }) => {
+          const user = await User.create({ name, email, password, address, city, zipcode, phone });
           const token = signToken(user);
 
           return { token, user };

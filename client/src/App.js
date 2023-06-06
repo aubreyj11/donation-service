@@ -10,8 +10,8 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-// import Charities from './pages/Charities';
 import Profile from './pages/Profile';
+import CharityPage from './pages/CharityPage';
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {
@@ -22,10 +22,10 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { StoreProvider } from './utils/GlobalState';
-import CharityPage from './pages/CharityPage';
+
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

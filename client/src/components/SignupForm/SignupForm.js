@@ -6,7 +6,7 @@ import { ADD_USER } from '../../utils/mutations';
 
 
 const SignupForm = (props) => {
-        const [formState, setFormState] = useState({ email: '', password: ''});
+        const [formState, setFormState] = useState({ name: '', email: '', password: '', address: '', city: '', zipcode: '', phone: ''});
         const [addUser] = useMutation(ADD_USER);
 
         const handleFormSubmit = async (event) => {
@@ -18,7 +18,7 @@ const SignupForm = (props) => {
                   password: formState.password,                  
                   address: formState.address,
                   city: formState.city,
-                  zipcode: formState.zipcode,
+                  zipcode: parseInt(formState.zipcode),
                   phone: formState.phone
                 },
             });
