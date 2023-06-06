@@ -35,8 +35,18 @@ const resolvers = {
         }
       },
     Mutation: {
-        addUser: async (parents, { name, email, password, address, city, zipcode, phone }) => {
-          const user = await User.create({ name, email, password, address, city, zipcode, phone });
+        updateUser: async (parent, {avatar}, context) => {
+            if (context.user)  {
+                const user = User.findById(context.user._id)
+              return User.findByIdAndUpdate(context.user.id, {...user, avatar}, {
+                new: true,
+              });
+            }
+      
+            throw new AuthenticationError('Not logged in');
+          },
+        addUser: async (parents, { name, email, password, address, city, zipcode, phone, avatar }) => {
+          const user = await User.create({ name, email, password, address, city, zipcode, phone, avatar });
           const token = signToken(user);
 
           return { token, user };

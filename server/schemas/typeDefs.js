@@ -10,6 +10,7 @@ type User {
     city: String
     zipcode: Int
     phone: String
+    avatar: String
 }
 
 type Auth {
@@ -27,7 +28,17 @@ type Query {
 }
 
 type Mutation {
-    addUser(name: String!, email: String!, password: String!, address: String!, city: String!, zipcode: Int!, phone: String!): Auth
+    updateUser(
+        name: String
+        email: String
+        password: String
+        address: String
+        city: String
+        zipcode: Int
+        phone: Int
+        avatar: String
+      ): User
+    addUser(name: String!, email: String!, password: String!, address: String!, city: String!, zipcode: Int!, phone: String!, avatar: String): Auth
     login(email: String!, password: String!): Auth
 }`;
 

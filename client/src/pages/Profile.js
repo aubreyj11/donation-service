@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect } from "react";
 import { GET_USER } from "../utils/queries";
-import { useQuery } from '@apollo/client';
+import { UPDATE_USER } from "../utils/mutations";
+import { useQuery, useMutation } from '@apollo/client';
 import {
   MDBCol,
   MDBContainer,
@@ -11,12 +12,20 @@ import {
   MDBCardImage,
 } from 'mdb-react-ui-kit';
 
+
 const Profile = () => {
+
+  const [count, setCount] = useState(1);
+
+  const avaSrc = `https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava${count}.webp`;
+
   const { data } = useQuery(GET_USER);
+  const [ changePhoto ] = useMutation(UPDATE_USER, {
+    variables: { avatar: avaSrc },
+  });
 
   const user = data?.getUser || {};
   console.log(user);
-  const [count, setCount] = useState(1);
 
   useEffect(() => {
     const savedCount = localStorage.getItem('count');
@@ -34,9 +43,10 @@ const Profile = () => {
       setCount(1);
     }
     console.log(count);
+    changePhoto();
   };
   
-  const avaSrc = `https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava${count}.webp`;
+  
     
   return (
     <section style={{ backgroundColor: '#eee' }}>
@@ -47,7 +57,7 @@ const Profile = () => {
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
                 <MDBCardImage
-                  src={avaSrc}
+                  src={user.avatar || avaSrc}
                   alt="avatar"
                   className="rounded-circle"
                   style={{ width: '150px' }}
@@ -56,7 +66,7 @@ const Profile = () => {
                 <p className="text-muted mb-1">{user.name}</p>
                 <p className="text-muted mb-4">{user.city}</p>
                 <button className="avaBtn" onClick={handleClick}>Change Avatar</button>
-                
+              
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

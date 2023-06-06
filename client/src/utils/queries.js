@@ -11,6 +11,7 @@ query getUser {
         city
         zipcode
         phone
+        avatar
     }
 }`;
 
