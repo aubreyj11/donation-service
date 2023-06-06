@@ -53,7 +53,7 @@ const resolvers = {
         },
         login: async (parent, { email, password }) => {
           //query database to find one user with email (which should be unique)
-          const user = await User.findOneAndDelete({ email });
+          const user = await User.findOne({ email });
         if (!user) {
           throw new AuthenticationError('Invalid Login Credentials')
         }
