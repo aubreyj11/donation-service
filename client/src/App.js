@@ -63,10 +63,9 @@ function App() {
             />
             <Route
               path="/profile"
-              // element= {
-              //   loggedIn ? <Profile /> : <Navigate replace to ={"/login"}/>
-              // }
-              element = {<Profile />}
+              element= {
+                loggedIn ? <Profile /> : <Navigate replace to ={"/login"}/>
+              }
             />
             <Route 
               path="/login" 
