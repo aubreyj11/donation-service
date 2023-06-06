@@ -14,8 +14,8 @@ import {
 const Profile = () => {
   const { data } = useQuery(GET_USER);
 
-  const user = data?.user || {};
-
+  const user = data?.getUser || {};
+  console.log(user);
   const [count, setCount] = useState(1);
 
   useEffect(() => {

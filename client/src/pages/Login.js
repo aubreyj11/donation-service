@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { LOGIN } from '../utils/mutations';
-import Auth from '../utils/auth';
 import LoginForm from '../components/LoginForm/LoginForm';
 
 function Login(props) {

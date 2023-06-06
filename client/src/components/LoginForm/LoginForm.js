@@ -1,5 +1,5 @@
 import React, { useState }  from 'react'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
 import { LOGIN } from '../../utils/mutations';
@@ -47,7 +47,7 @@ const LoginForm = () => {
             placeholder='**********' 
             name="password"
             type="password"
-            id="password"
+            id="pwd"
             onChange={handleChange}
             />
         </Form.Field>

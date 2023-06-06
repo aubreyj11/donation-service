@@ -7,12 +7,12 @@ import AuthService from "./utils/auth";
 import Header from './components/Header'
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import NoMatch from './pages/NotFound';
+import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-// import Charities from './pages/Charities';
 import Profile from './pages/Profile';
 import LearnMore from './pages/LearnMore';
+import CharityPage from './pages/CharityPage';
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {
@@ -23,11 +23,11 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { StoreProvider } from './utils/GlobalState';
-import CharityPage from './pages/CharityPage';
+
 
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -69,7 +69,7 @@ function App() {
             />
             <Route
               path="/profile"
-              element= {
+              element= {                 
                 loggedIn ? <Profile /> : <Navigate replace to ={"/login"}/>
               }
             />
@@ -83,7 +83,7 @@ function App() {
             />
             <Route 
               path="*" 
-              element={<NoMatch />} 
+              element={<NotFound />} 
             />
           </Routes>
             <Footer />
