@@ -5,21 +5,21 @@ import Auth from '../../utils/auth';
 import { ADD_USER } from '../../utils/mutations';
 
 
-const SignupForm = () => {
-        const [formState, setFormState] = useState({ email: '', password: ''});
+const SignupForm = (props) => {
+        const [formState, setFormState] = useState({ name: '', email: '', password: '', address: '', city: '', zipcode: '', phone: ''});
         const [addUser] = useMutation(ADD_USER);
 
         const handleFormSubmit = async (event) => {
             event.preventDefault();
             const mutationResponse = await addUser({
                 variables: {
-                email: formState.email,
-                password: formState.password,
-                name: formState.name,
-                address: formState.address,
-                city: formState.city,
-                zipcode: formState.zipcode,
-                phone: formState.phone
+                  name: formState.name,
+                  email: formState.email,
+                  password: formState.password,                  
+                  address: formState.address,
+                  city: formState.city,
+                  zipcode: parseInt(formState.zipcode),
+                  phone: formState.phone
                 },
             });
             const token = mutationResponse.data.addUser.token;
@@ -89,6 +89,15 @@ return (
       name="password"
       type="password"
       id="password"
+      onChange={handleChange}
+      />
+    </Form.Field>
+    <Form.Field required>
+      <label style={{ margin: '0px 0px 10px 5px'}}>Phone Number</label>
+      <input 
+      placeholder='###-###-####' 
+      name="phone"
+      id="phone"
       onChange={handleChange}
       />
     </Form.Field>
