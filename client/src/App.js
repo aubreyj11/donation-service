@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 // import Charities from './pages/Charities';
 import Profile from './pages/Profile';
+import LearnMore from './pages/LearnMore';
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {
@@ -23,6 +24,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { StoreProvider } from './utils/GlobalState';
 import CharityPage from './pages/CharityPage';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -57,6 +59,10 @@ function App() {
               path="/" 
               element={<Home />} 
             />
+            <Route
+              path="/learnmore"
+              element={<LearnMore />}
+              />
             <Route
               path="/charities"
               element={<CharityPage />}
