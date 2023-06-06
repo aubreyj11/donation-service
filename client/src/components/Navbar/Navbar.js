@@ -45,13 +45,12 @@ export default class Navbar extends Component {
                 <Menu.Item 
                     name='login'
                     active={activeItem === 'login'}
-                    onClick={this.handleItemClick}
                     position='right'
                     >
                         {loggedIn ? (
-                            <Link to="/logout">Sign Out</Link>
+                            <Link to = "/" onClick={() => AuthService.logout()}>Log Out</Link>
                         ) : (
-                            <Link to="/login">Log In</Link>
+                            <Link to="/login" onClick={this.handleItemClick}>Log In</Link>
                         )}
                 </Menu.Item>
             </Menu>
