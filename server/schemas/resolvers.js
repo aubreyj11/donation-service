@@ -29,9 +29,10 @@ const resolvers = {
         }
       },
     Mutation: {
-        updateUser: async (parent, args, context) => {
-            if (context.user) {
-              return User.findByIdAndUpdate(context.user.id, args, {
+        updateUser: async (parent, {avatar}, context) => {
+            if (context.user)  {
+                const user = User.findById(context.user._id)
+              return User.findByIdAndUpdate(context.user.id, {...user, avatar}, {
                 new: true,
               });
             }

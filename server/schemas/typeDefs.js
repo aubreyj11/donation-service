@@ -26,6 +26,7 @@ type Mutation {
         lastName: String
         email: String
         password: String
+        avatar: String
       ): User
     )
 }`;
