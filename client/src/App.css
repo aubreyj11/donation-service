@@ -65,12 +65,13 @@
   font-weight: bolder;
   font-size: 6.5em;
   width: 500px;
+  margin-bottom: 20px;
   
 }
 
 .home-text {
   font-size: 2rem;
-  width: 1300px;
+  width: 1200px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 

@@ -24,9 +24,8 @@ const Profile = () => {
     variables: { avatar: avaSrc },
   });
 
-  const user = data?.user || {};
-
-  
+  const user = data?.getUser || {};
+  console.log(user);
 
   useEffect(() => {
     const savedCount = localStorage.getItem('count');
