@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { GET_USER } from "../utils/queries";
 import { useQuery } from '@apollo/client';
 import {
@@ -15,6 +15,28 @@ const Profile = () => {
   const { data } = useQuery(GET_USER);
 
   const user = data?.user || {};
+
+  const [count, setCount] = useState(1);
+
+  useEffect(() => {
+    const savedCount = localStorage.getItem('count');
+    if (savedCount) {
+      setCount(parseInt(savedCount));
+    }
+  }, []);
+
+  const handleClick = () => {
+    if (count < 6) {
+      const newCount = count + 1;
+      setCount(newCount);
+      localStorage.setItem('count', newCount);
+    } else if (count=== 6){
+      setCount(1);
+    }
+    console.log(count);
+  };
+  
+  const avaSrc = `https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava${count}.webp`;
     
   return (
     <section style={{ backgroundColor: '#eee' }}>
@@ -25,13 +47,15 @@ const Profile = () => {
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
                 <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  src={avaSrc}
                   alt="avatar"
                   className="rounded-circle"
                   style={{ width: '150px' }}
                   fluid />
+                  <hr/>
                 <p className="text-muted mb-1">{user.name}</p>
                 <p className="text-muted mb-4">{user.city}</p>
+                <button className="avaBtn" onClick={handleClick}>Change Avatar</button>
                 
               </MDBCardBody>
             </MDBCard>
