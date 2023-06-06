@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import AuthService from "../../utils/auth";
 
+const loggedIn = AuthService.loggedIn();
 export default class Navbar extends Component {
     state = { activeItem: 'home' }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
 
     render() {
         const { activeItem } = this.state
@@ -45,9 +48,11 @@ export default class Navbar extends Component {
                     onClick={this.handleItemClick}
                     position='right'
                     >
-                    <Link to="/login">
-                    Log In
-                    </Link>
+                        {loggedIn ? (
+                            <Link to="/logout">Sign Out</Link>
+                        ) : (
+                            <Link to="/login">Log In</Link>
+                        )}
                 </Menu.Item>
             </Menu>
         )
