@@ -45,8 +45,8 @@ const resolvers = {
       
             throw new AuthenticationError('Not logged in');
           },
-        addUser: async (parents, { name, email, password, address, city, zipcode, phone }) => {
-          const user = await User.create({ name, email, password, address, city, zipcode, phone });
+        addUser: async (parents, { name, email, password, address, city, zipcode, phone, avatar }) => {
+          const user = await User.create({ name, email, password, address, city, zipcode, phone, avatar });
           const token = signToken(user);
 
           return { token, user };

@@ -20,6 +20,7 @@ export const ADD_USER = gql`
     $city: String!
     $zipcode: Int!
     $phone: String!
+    $avatar: String
   ) {
     addUser(
       name: $name
@@ -29,6 +30,7 @@ export const ADD_USER = gql`
       city: $city
       zipcode: $zipcode
       phone: $phone
+      avatar: $avatar
     ) {
       token
       user {
@@ -40,6 +42,13 @@ export const ADD_USER = gql`
 
 export const UPDATE_USER = gql` 
   mutation updateUser(
+    $name: String!
+    $email: String!
+    $password: String!
+    $address: String!
+    $city: String!
+    $zipcode: Int!
+    $phone: String!
     $avatar: String
   ) {
     updateUser(

@@ -11,6 +11,7 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     password: {
         type: String,
@@ -37,6 +38,7 @@ const userSchema = new Schema({
      },
      avatar: {
         type: String,
+        default: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1.webp"
      }
 });
 
