@@ -56,7 +56,7 @@ const Profile = () => {
                 <p className="text-muted mb-1">{user.name}</p>
                 <p className="text-muted mb-4">{user.city}</p>
                 <button className="avaBtn" onClick={handleClick}>Change Avatar</button>
-                
+              
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

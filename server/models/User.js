@@ -32,6 +32,9 @@ const userSchema = new Schema({
         required: true,
         minLength: 10,
         maxLength: 12,
+     },
+     avatar: {
+        type: String,
      }
 });
 

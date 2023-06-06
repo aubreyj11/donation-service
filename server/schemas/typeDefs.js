@@ -21,5 +21,11 @@ type Mutation {
         zipcode: Number!
         phone: Number!
     ): Auth
+    updateUser(
+        firstName: String
+        lastName: String
+        email: String
+        password: String
+      ): User
     )
 }`;

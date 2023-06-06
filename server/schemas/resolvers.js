@@ -29,7 +29,15 @@ const resolvers = {
         }
       },
     Mutation: {
-        addUser
+        updateUser: async (parent, args, context) => {
+            if (context.user) {
+              return User.findByIdAndUpdate(context.user.id, args, {
+                new: true,
+              });
+            }
+      
+            throw new AuthenticationError('Not logged in');
+          },
     }
     
 }
