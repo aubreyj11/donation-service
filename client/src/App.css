@@ -71,7 +71,7 @@
 
 .home-text {
   font-size: 2rem;
-  width: 1200px;
+  width: 900px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -97,13 +97,13 @@
 
 @media screen and (max-width: 1440px) {
   .home-h1 {
-    font-size: 5em;
+    font-size: 15px;
     width: 400px;
     margin-bottom: 20px;
   }
   .home-text {
-    font-size: 20px;
-    width: 900px;
+    font-size: 8px;
+    width: 300px;
   }
   .homePage-img {
     margin-top: 30px;
@@ -112,22 +112,66 @@
     float: right;
   
   }
+
+  .headerTitle {
+    font-size: 25px;
+    width: 400px;
+    line-height: 24px;
+    padding-top: 10px;
+  }
   
+  .headerSubTitle {
+    font-size: 1px;
+    width: 150px;
+  }
+
+  .truckIcon {
+    padding-left: 20px;
+  }
+
+  .headerStatus {
+    font-size: 12px;
+    width: 150px;
+    padding: 10px;
+    margin-left: -100px;
+  }
 }
 
 @media screen and (max-width: 484px) {
   .home-h1 {
-    font-size: 3em;
+    font-size: 2em;
     width: 360px;
     margin-bottom: 20px;
+    margin-left: -30px;
   }
   .home-text {
     font-size: 20px;
     width: 360px;
+    margin-left: -30px;
   }
   .homePage-img {
     display: none;
   
   }
+
+  .headerTitle {
+    font-size: 20px;
+    width: 500px;
+    line-height: 25px;
+    padding-top: 10px;
+  }
   
+  .headerSubTitle {
+    font-size: 1px;
+    width: 190px;
+  }
+
+  .truckIcon {
+    padding-left: 20px;
+  }
+  
+  #topLink {
+    padding: 20px;
+    margin: 20px;
+  }
 }
