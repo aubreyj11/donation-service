@@ -29,13 +29,6 @@ type Query {
 
 type Mutation {
     updateUser(
-        name: String
-        email: String
-        password: String
-        address: String
-        city: String
-        zipcode: Int
-        phone: Int
         avatar: String
       ): User
     addUser(name: String!, email: String!, password: String!, address: String!, city: String!, zipcode: Int!, phone: String!, avatar: String): Auth

@@ -36,12 +36,26 @@ const resolvers = {
       },
     Mutation: {
         updateUser: async (parent, {avatar}, context) => {
-            if (context.user)  {
-                const user = User.findById(context.user._id)
-              return User.findByIdAndUpdate(context.user.id, {...user, avatar}, {
-                new: true,
-              });
+            console.log(avatar);
+            try {
+                if (context.user)  {
+                    console.log(context.user)
+                    const user = await User.findOneAndUpdate(
+                        { _id: context.user._id }, 
+                        { avatar: avatar }, 
+                        {
+                            new: true,
+                            runValidators: true,
+                        }
+                    );
+    
+                    console.log(user)
+                    return user
+                }
+            } catch (err) {
+                console.log(err);
             }
+            
       
             throw new AuthenticationError('Not logged in');
           },
