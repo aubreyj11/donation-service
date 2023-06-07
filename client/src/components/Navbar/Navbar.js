@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import AuthService from "../../utils/auth";
 
+const loggedIn = AuthService.loggedIn();
 export default class Navbar extends Component {
     state = { activeItem: 'home' }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
 
     render() {
         const { activeItem } = this.state
@@ -42,12 +45,13 @@ export default class Navbar extends Component {
                 <Menu.Item 
                     name='login'
                     active={activeItem === 'login'}
-                    onClick={this.handleItemClick}
                     position='right'
                     >
-                    <Link to="/login">
-                    Log In
-                    </Link>
+                        {loggedIn ? (
+                            <Link to = "/" onClick={() => AuthService.logout()}>Log Out</Link>
+                        ) : (
+                            <Link to="/login" onClick={this.handleItemClick}>Log In</Link>
+                        )}
                 </Menu.Item>
             </Menu>
         )
