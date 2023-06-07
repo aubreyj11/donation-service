@@ -8,6 +8,7 @@ export default class Navbar extends Component {
 
     state = { activeItem: 'home' }    
 
+    //will set active element in navbar to the element that triggers the event using its name attribute
     handleItemClick = (e, { name }) => {
         this.setState({ activeItem: name });
     }

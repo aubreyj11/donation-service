@@ -53,24 +53,26 @@ const resolvers = {
             }    
             throw new AuthenticationError('Not logged in');
           },
+
         addUser: async (parents, { name, email, password, address, city, zipcode, phone, avatar, foodDonations }) => {
           const user = await User.create({ name, email, password, address, city, zipcode, phone, avatar, foodDonations });
           const token = signToken(user);
 
           return { token, user };
         },
+
         login: async (parent, { email, password }) => {
           //query database to find one user with email (which should be unique)
           const user = await User.findOne({ email });
-        if (!user) {
-          throw new AuthenticationError('Invalid Login Credentials')
-        }
-        const correctPw = await user.isCorrectPassword(password);
-        if (!correctPw) {
-          throw new AuthenticationError('Invalid Login Credentials');
-        }
-        const token = signToken(user);
-        return { token, user };
+          if (!user) {
+            throw new AuthenticationError('Invalid Login Credentials')
+          }
+          const correctPw = await user.isCorrectPassword(password);
+          if (!correctPw) {
+            throw new AuthenticationError('Invalid Login Credentials');
+          }
+          const token = signToken(user);
+          return { token, user };
       }
     }
   };
