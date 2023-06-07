@@ -13,8 +13,6 @@ function Signup(props) {
     <div style={{ margin: '20px', padding: '0px 20px 0px 20px' }}>
     <SignupForm/>
     </div>
-    <form action="https://www.paypal.com/donate" method="post" target="_top"></form>
-    <button donate-here>Donate Here!</button>
     </>
   );
 }
