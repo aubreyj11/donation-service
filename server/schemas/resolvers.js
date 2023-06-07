@@ -14,7 +14,6 @@ const resolvers = {
     
             return user.orders.id(_id);
           }
-
           const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items,
@@ -39,7 +38,6 @@ const resolvers = {
             console.log(avatar);
             try {
                 if (context.user)  {
-                    console.log(context.user)
                     const user = await User.findOneAndUpdate(
                         { _id: context.user._id }, 
                         { avatar: avatar }, 
@@ -48,15 +46,11 @@ const resolvers = {
                             runValidators: true,
                         }
                     );
-    
-                    console.log(user)
                     return user
                 }
             } catch (err) {
                 console.log(err);
-            }
-            
-      
+            }    
             throw new AuthenticationError('Not logged in');
           },
         addUser: async (parents, { name, email, password, address, city, zipcode, phone, avatar, foodDonations }) => {
