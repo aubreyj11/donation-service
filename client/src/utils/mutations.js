@@ -42,23 +42,19 @@ export const ADD_USER = gql`
 
 export const UPDATE_USER = gql` 
   mutation updateUser(
-    $name: String!
-    $email: String!
-    $password: String!
-    $address: String!
-    $city: String!
-    $zipcode: Int!
-    $phone: String!
     $avatar: String
   ) {
     updateUser(
-      name: $name
-      email: $email
-      password: $password
-      address: $address
-      city: $city
-      zipcode: $zipcode
-      phone: $phone
       avatar: $avatar
-    )
+    ) {
+      _id
+      name
+      email
+      password
+      address
+      city
+      zipcode
+      phone 
+      avatar
+    }
   }`;

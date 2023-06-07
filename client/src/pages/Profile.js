@@ -22,6 +22,7 @@ const Profile = () => {
   const { data } = useQuery(GET_USER);
   const [ changePhoto ] = useMutation(UPDATE_USER, {
     variables: { avatar: avaSrc },
+    refetchQueries: [{ query: GET_USER }],  
   });
 
   const user = data?.getUser || {};
@@ -57,7 +58,7 @@ const Profile = () => {
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
                 <MDBCardImage
-                  src={user.avatar || avaSrc}
+                  src={user.avatar}
                   alt="avatar"
                   className="rounded-circle"
                   style={{ width: '150px' }}
