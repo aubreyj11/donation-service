@@ -1,6 +1,15 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+type FoodDonation {
+    _id: ID
+    pickupTime: String
+    address: String
+    city: String
+    zip: String
+    comment: String
+}
+
 type User {
     _id: ID
     name: String
@@ -11,6 +20,7 @@ type User {
     zipcode: Int
     phone: String
     avatar: String
+    foodDonations: [FoodDonation]
 }
 
 type Auth {

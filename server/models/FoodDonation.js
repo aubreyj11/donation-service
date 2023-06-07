@@ -18,10 +18,13 @@ const foodDonationSchema = new Schema({
     zip: {
         type: String,
         required: true
+    },
+    comment: {
+        type: String
     }
 }
 )
 
-const FoodDonation = mongoose.model('Food_Donation', orderShcema);
+const FoodDonation = mongoose.model('Food_Donation', foodDonationSchema);
 
 module.exports = FoodDonation;

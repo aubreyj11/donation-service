@@ -12,6 +12,14 @@ query getUser {
         zipcode
         phone
         avatar
+        foodDonations{
+            _id
+            pickupTime
+            address
+            city
+            zip
+            comment            
+        }
     }
 }`;
 
