@@ -7,11 +7,11 @@ import AuthService from "./utils/auth";
 import Header from './components/Header'
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import NoMatch from './pages/NotFound';
+import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-// import Charities from './pages/Charities';
 import Profile from './pages/Profile';
+import CharityPage from './pages/CharityPage';
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {
@@ -23,8 +23,9 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { StoreProvider } from './utils/GlobalState';
 
+
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -56,13 +57,13 @@ function App() {
               path="/" 
               element={<Home />} 
             />
-            {/* <Route
+            <Route
               path="/charities"
-              element={<Charities />}
-            /> */}
+              element={<CharityPage />}
+            />
             <Route
               path="/profile"
-              element= {
+              element= {                 
                 loggedIn ? <Profile /> : <Navigate replace to ={"/login"}/>
               }
             />
@@ -76,7 +77,7 @@ function App() {
             />
             <Route 
               path="*" 
-              element={<NoMatch />} 
+              element={<NotFound />} 
             />
           </Routes>
             <Footer />
@@ -84,10 +85,6 @@ function App() {
         </div>
       </Router>    
     </ApolloProvider>
-    // <>
-    // <Header />
-    // <Footer />
-    // </>
   );
 }
 

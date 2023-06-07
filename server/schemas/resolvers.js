@@ -1,6 +1,5 @@
 const { User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -19,6 +18,7 @@ const resolvers = {
   
         throw new AuthenticationError('Not logged in');
       },
+
 
         order: async (parent, { _id }, context) => {
           if (context.user) {
@@ -39,6 +39,14 @@ const resolvers = {
           });
     
           return { session: session.id };
+        },
+        getUser: async (parent, args, context) => {
+          if (context.user) {
+            const user = await User.findById(context.user._id);   
+            return user;
+          }
+    
+          throw new AuthenticationError('Not logged in');
         }
       },
       addDonate: async (parent, { Order }, context) => {
@@ -60,5 +68,53 @@ const resolvers = {
   
         throw new AuthenticationError('Not logged in');
       },
+
+    Mutation: {
+        updateUser: async (parent, {avatar}, context) => {
+            console.log(avatar);
+            try {
+                if (context.user)  {
+                    console.log(context.user)
+                    const user = await User.findOneAndUpdate(
+                        { _id: context.user._id }, 
+                        { avatar: avatar }, 
+                        {
+                            new: true,
+                            runValidators: true,
+                        }
+                    );
+
     
-}
+                    console.log(user)
+                    return user
+                }
+            } catch (err) {
+                console.log(err);
+            }
+            
+      
+            throw new AuthenticationError('Not logged in');
+          },
+        addUser: async (parents, { name, email, password, address, city, zipcode, phone, avatar }) => {
+          const user = await User.create({ name, email, password, address, city, zipcode, phone, avatar });
+          const token = signToken(user);
+
+          return { token, user };
+        },
+        login: async (parent, { email, password }) => {
+          //query database to find one user with email (which should be unique)
+          const user = await User.findOne({ email });
+        if (!user) {
+          throw new AuthenticationError('Invalid Login Credentials')
+        }
+        const correctPw = await user.isCorrectPassword(password);
+        if (!correctPw) {
+          throw new AuthenticationError('Invalid Login Credentials');
+        }
+        const token = signToken(user);
+        return { token, user };
+      }
+    }
+  };
+
+  module.exports = resolvers;

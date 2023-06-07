@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
 import { GET_USER } from "../utils/queries";
-import { useQuery } from '@apollo/client';
+import { UPDATE_USER } from "../utils/mutations";
+import { useQuery, useMutation } from '@apollo/client';
 import {
   MDBCol,
   MDBContainer,
@@ -11,10 +12,42 @@ import {
   MDBCardImage,
 } from 'mdb-react-ui-kit';
 
-const Profile = () => {
-  const { data } = useQuery(GET_USER);
 
-  const user = data?.user || {};
+const Profile = () => {
+
+  const [count, setCount] = useState(1);
+
+  const avaSrc = `https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava${count}.webp`;
+
+  const { data } = useQuery(GET_USER);
+  const [ changePhoto ] = useMutation(UPDATE_USER, {
+    variables: { avatar: avaSrc },
+    refetchQueries: [{ query: GET_USER }],  
+  });
+
+  const user = data?.getUser || {};
+  console.log(user);
+
+  useEffect(() => {
+    const savedCount = localStorage.getItem('count');
+    if (savedCount) {
+      setCount(parseInt(savedCount));
+    }
+  }, []);
+
+  const handleClick = () => {
+    if (count < 6) {
+      const newCount = count + 1;
+      setCount(newCount);
+      localStorage.setItem('count', newCount);
+    } else if (count=== 6){
+      setCount(1);
+    }
+    console.log(count);
+    changePhoto();
+  };
+  
+  
     
   return (
     <section style={{ backgroundColor: '#eee' }}>
@@ -25,14 +58,16 @@ const Profile = () => {
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
                 <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  src={user.avatar}
                   alt="avatar"
                   className="rounded-circle"
                   style={{ width: '150px' }}
                   fluid />
+                  <hr/>
                 <p className="text-muted mb-1">{user.name}</p>
                 <p className="text-muted mb-4">{user.city}</p>
-                
+                <button className="avaBtn" onClick={handleClick}>Change Avatar</button>
+              
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

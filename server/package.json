@@ -4,9 +4,9 @@
     "description": "",
     "main": "server.js",
     "scripts": {
-      "start": "node server.js",
+      "start": "node server.js --ignore client",
       "watch": "nodemon",
-      "seed": "node config/seeds.js"
+      "seed": "node utils/seed.js"
     },
     "keywords": [],
     "author": "",
@@ -17,7 +17,7 @@
       "express": "^4.17.2",
       "graphql": "^16.3.0",
       "jsonwebtoken": "^8.5.1",
-      "mongoose": "^7.0.2",
+      "mongoose": "^6.1.8",
       "stripe": "^8.67.0"
     },
     "devDependencies": {
