@@ -18,10 +18,10 @@ const HeaderContainer = () => {
       <Grid.Row>
         <Grid.Column width={6}>
           <Header as='h1'>
-            <Icon name='truck' color='blue' size='massive' />
-            <Header.Content>
+            <Icon name='truck' color='blue' size='massive' className='truckIcon'/>
+            <Header.Content className='headerTitle'>
               ChariTeam Food Waste Donation Service
-              <Header.Subheader>
+              <Header.Subheader className='headerSubTitle'>
                 Handling your waste so you don't have to.
               </Header.Subheader>
             </Header.Content>
@@ -30,7 +30,7 @@ const HeaderContainer = () => {
         <Grid.Column width={2} floated='right'>
         <Link to="/profile">
           <Header as={'h5'} >
-            <Header.Content>
+            <Header.Content className='headerStatus'>
               Logged in as <span style={{color: 'blue'}}>{loggedIn ? user.name : 'Guest'}</span>
             </Header.Content>
               <Image src={user.avatar} avatar size='small' />
