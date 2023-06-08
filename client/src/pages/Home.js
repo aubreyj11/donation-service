@@ -1,6 +1,9 @@
 import { Segment, Image, Button, Icon } from 'semantic-ui-react'
 
+
+
 function Home() {
+
   return (
     <Segment basic padded="very">
       <div className='homePage-seg'>
@@ -14,9 +17,10 @@ function Home() {
       <Button.Content hidden>
         <Icon name='arrow right' />
       </Button.Content>
-    </Button>
+      </Button> 
       </div>
     </Segment>
+
   )
 }
 
