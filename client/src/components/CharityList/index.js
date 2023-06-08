@@ -10,7 +10,7 @@ const CharityList = () => {
         <Header.Subheader>Find out more about our local food banks and the organizations serving our community.</Header.Subheader>
     </Header>
     <Divider />
-    <Container>
+    <Container style={{margin: "0px 0px 30px 0px"}}>
         <Grid columns={2} divided >
             <Grid.Column>
                 <Header as='h4' content='Second Harvest Food Bank of Orange County' subheader='1 of 2 food banks in Orange County' textAlign='center' />
