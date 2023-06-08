@@ -55,7 +55,7 @@ return (
       onChange={handleChange}
       />
     </Form.Field>
-    <Form.Field>
+    <Form.Field required>
       <label style={{ margin: '0px 0px 10px 5px'}}>Address</label>
       <input 
       placeholder='Street Address' 
@@ -64,7 +64,7 @@ return (
       onChange={handleChange}
       />
     </Form.Field>
-    <Form.Field>
+    <Form.Field required>
       <label style={{ margin: '0px 0px 10px 5px'}}>City</label>
       <input 
       placeholder='City' 
@@ -73,7 +73,7 @@ return (
       onChange={handleChange}
       />
     </Form.Field>
-    <Form.Field>
+    <Form.Field required>
       <label style={{ margin: '0px 0px 10px 5px'}}>Zip Code</label>
       <input 
       placeholder='Zip Code' 
