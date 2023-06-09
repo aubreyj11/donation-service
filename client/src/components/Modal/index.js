@@ -11,11 +11,6 @@ function ReactModal() {
     const { data } = useQuery(GET_USER);
     const [addFoodDonation] = useMutation(ADD_FOOD_DONATION);
     const user = data?.getUser || {};
-    const options = [
-      { key : 1, text: 'Morning', value: 1},
-      { key : 2, text: 'Afternoon', value: 2},
-      { key : 3, text: 'Evening', value: 3},
-    ]
     const [errorMessage, setErrorMessage] = React.useState("");
     const [formState , setFormState] = React.useState({ date: '', time: '', address: '', city: '', zip: '', comment: ''})
     const [date, setDate] = React.useState(new Date())    
@@ -42,6 +37,7 @@ function ReactModal() {
       console.log(formState)
     };
 
+    //takes content from the react calendar and stringifies and adds it to schedule form, then it checks if the date has already passed, if so it creates a bad Date state which wont allow the form to submit
     const handleDateChange = (dateChoice) => {
       setFormState({
         ...formState,
@@ -49,7 +45,7 @@ function ReactModal() {
       });
       setErrorMessage('');
       if(Date.now() > dateChoice){
-        setErrorMessage('That Date has already passed, please select another date');
+        setErrorMessage('That date has already passed, please select another date.');
         setBadDate(true);
         return
       }else{
@@ -65,7 +61,7 @@ function ReactModal() {
          setErrorMessage('Missing required information fields!')
          return
       }else if(badDate){
-        setErrorMessage('That Date has already passed, please select another date');
+        setErrorMessage('That date has already passed, please select another date.');
         return
       }
       else {

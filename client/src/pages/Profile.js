@@ -3,7 +3,6 @@ import { GET_USER } from "../utils/queries";
 import { UPDATE_USER } from "../utils/mutations";
 import { useQuery, useMutation } from '@apollo/client';
 import AuthService from "../utils/auth";
-import ReactModal from "../components/Modal";
 import { Button } from 'semantic-ui-react'
 import {
   MDBCol,
@@ -14,6 +13,7 @@ import {
   MDBCardBody,
   MDBCardImage,
 } from 'mdb-react-ui-kit';
+import UserPickupTable from "../components/UserPickupTable";
 
 
 const Profile = () => {
@@ -54,7 +54,6 @@ const Profile = () => {
   return (
     <section style={{ backgroundColor: '#eee' }}>
       <MDBContainer className="py-5">
-
         <MDBRow>
           <MDBCol lg="4">
             <MDBCard className="mb-4">
@@ -132,8 +131,10 @@ const Profile = () => {
                 </MDBRow>
               </MDBCardBody>
             </MDBCard>
-                    <ReactModal />
           </MDBCol>
+        </MDBRow>
+        <MDBRow>
+          <UserPickupTable pickups={user.foodDonations}/>
         </MDBRow>
       </MDBContainer>
     </section>
