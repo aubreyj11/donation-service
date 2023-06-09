@@ -50,6 +50,16 @@ export default class Navbar extends Component {
                     </Link>
                 </Menu.Item>
                 <Menu.Item
+                    as={NavLink} exact to="/donation"
+                    name='donation'
+                    active={activeItem === 'Profile'}
+                    onClick={this.handleItemClick}
+                >
+                    <Link to="/donation">
+                    Donate
+                    </Link>
+                </Menu.Item>
+                <Menu.Item
                     as={NavLink} exact to="/profile"
                     name='profile'
                     active={activeItem === 'Profile'}

@@ -13,6 +13,7 @@ import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import CharityPage from './pages/CharityPage';
 import About from './pages/About'
+import Donation from './pages/Donation';
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {
@@ -83,6 +84,10 @@ function App() {
             <Route
               path="/about"
               element={<About/>}
+            />
+            <Route
+              path="/donation"
+              element={<Donation/>}
             />
           </Routes>
             <Footer />
