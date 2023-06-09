@@ -6,14 +6,14 @@ import AuthService from "../../utils/auth";
 const CharityList = () => {
     const loggedIn = AuthService.loggedIn();
   return (
-
     <>
     <Header as='h2' textAlign='center'>
         Food Donation Centers
         <Header.Subheader>Find out more about our local food banks and the organizations serving our community.</Header.Subheader>
     </Header>
+    {/* if loggedIn, display donation signup modal, else button redirects to login */}
     {loggedIn ? (
-        <ReactModal /> ) : (<div><Button href='/login'>Donate</Button></div>
+        <div className='mx-auto'><ReactModal /></div> ) : (<div className='mx-auto'><Button href='/login'>Donate</Button></div>
          )}
         <Divider />
     <Container style={{margin: "0px 0px 30px 0px"}}>
