@@ -12,7 +12,6 @@ const resolvers = {
           const user = await User.findById(context.user._id);   
           return user;
         }
-  
         throw new AuthenticationError('Not logged in');
       }
     },
