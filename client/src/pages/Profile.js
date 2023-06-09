@@ -14,6 +14,7 @@ import {
   MDBCardBody,
   MDBCardImage,
 } from 'mdb-react-ui-kit';
+import { Button } from 'semantic-ui-react';
 
 
 const Profile = () => {
@@ -69,7 +70,8 @@ const Profile = () => {
                   <hr/>
                 <p className="text-muted mb-1">{user.name}</p>
                 <p className="text-muted mb-4">{user.city}</p>
-                <button className="avaBtn" onClick={handleClick}>Change Avatar</button>
+                
+                <Button color='blue' onClick={handleClick}>Change Avatar</Button>
               
               </MDBCardBody>
             </MDBCard>
