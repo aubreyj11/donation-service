@@ -1,7 +1,6 @@
 import React from 'react'
-import {Navigate} from 'react'
 import { GET_USER } from '../../utils/queries'
-import { useQuery } from '@apollo/client'
+import { useQuery, useMutation } from '@apollo/client'
 import AuthService from "../../utils/auth";
 import { Calendar as ReactCalendar } from 'react-calendar'
 import { Button, Header, Modal, Menu, Dropdown, Input, Form, TextArea } from 'semantic-ui-react'
@@ -29,8 +28,8 @@ function ReactModal() {
       trigger={<Button >Donate</Button>}
       size='small'
     >
-      
       <Modal.Header>Select a Scheduled Pick Up Day</Modal.Header>
+      <form>
       <Modal.Content>
         <div className='calendar-ctn'>
             <ReactCalendar onChange={setDate} value={date} />
@@ -76,11 +75,13 @@ function ReactModal() {
         <Button
           content="Submit"
           labelPosition='center'
+          floated='right'
           icon='checkmark'
           onClick={() => setOpen(false)}
           positive
         />
       </Modal.Actions>
+    </form>
     </Modal>
     </div>
   )

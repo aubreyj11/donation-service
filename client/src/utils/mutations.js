@@ -58,3 +58,27 @@ export const UPDATE_USER = gql`
       avatar
     }
   }`;
+
+// export const ADD_DONATION = gql`
+// mutation addDonation(
+//   $pickupTime: Date!
+//   $address: String!
+//   $city: String!
+//   $zip: Int!
+//   $comment: String
+//   ) { 
+//     addDonation(
+//       pickupTime: $pickupTime
+//       address: $address
+//       city: $city
+//       zip: $zip
+//       comment: $comment
+//     ) {
+//       _id
+//       pickupTime
+//       address
+//       city
+//       zip
+//       comment
+//     }
+//   }`;
