@@ -7,16 +7,17 @@ import AuthServices from '../../utils/auth'
 import { Link } from 'react-router-dom'
 
 
-const HeaderContainer = () => {
+const HeaderContainer = (props) => {
   const loggedIn = AuthServices.loggedIn();
   const { data } = useQuery(GET_USER);
   const user = data?.getUser || {};
   console.log(user);
   return (
   <>
-   <Grid style={{marginLeft: "5px", marginRight: "5px"}}>
+   <Grid style={{marginLeft: "5px", marginRight: "5px"}} stackable>
       <Grid.Row>
-        <Grid.Column width={6}>
+        {/* Title Header */}
+        <Grid.Column width={12}>
           <Header as='h1'>
             <Icon name='truck' color='blue' size='massive' className='truckIcon'/>
             <Header.Content className='headerTitle'>
@@ -27,19 +28,20 @@ const HeaderContainer = () => {
             </Header.Content>
           </Header>
         </Grid.Column>
-        <Grid.Column width={2} floated='right'>
-        <Link to="/profile">
-          <Header as={'h5'} >
-            <Header.Content className='headerStatus'>
-              Logged in as <span style={{color: 'blue'}}>{loggedIn ? user.name : 'Guest'}</span>
-            </Header.Content>
+        <Grid.Column width={4} floated='right'>
+          <Link to="/profile">
+          {/* Avatar Header */}
+            <Header as={'h5'} >
+              <Header.Content className='headerStatus'>
+                Logged in as <span style={{color: 'blue'}}>{loggedIn ? user.name : 'Guest'}</span>
+              </Header.Content>
               <Image src={user.avatar} className='avaSmall' avatar size='small' />
-          </Header>
-        </Link> 
+            </Header>
+          </Link> 
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
-        <Navbar />
+        <Navbar {...props} />
       </Grid.Row>
    </Grid>
   </>

@@ -68,7 +68,7 @@ const Profile = () => {
                 <p className="text-muted mb-1">{user.name}</p>
                 <p className="text-muted mb-4">{user.city}</p>
                 
-                <Button color='blue' onClick={handleClick}>Change Avatar</Button>
+                <Button onClick={handleClick}>Change Avatar</Button>
               
               </MDBCardBody>
             </MDBCard>
