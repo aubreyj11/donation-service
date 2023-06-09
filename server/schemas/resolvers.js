@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, FoodDonation } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('pk_test_51NGsraCQkZ4sTLVlAxyxwqDcGmDeKmoI6226SLNoBt9Qe9gcYiRUWi4CTIXJ4pqqO8Wp6uITa49l7XFGbvAfTDBz00jxdaatRC');
@@ -74,6 +74,22 @@ const resolvers = {
         }
         const token = signToken(user);
         return { token, user };
+    },
+
+    addFoodDonation: async (parent, { date, time, address, city, zip, comment }, context) => {
+      try{
+        
+        const foodDonation = await FoodDonation.create({ date, time, address, city, zip, comment });
+        await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { foodDonations: { date, time, address, city, zip, comment } } },
+            { new: true, runValidators: true}
+          );
+          return foodDonation;
+
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
 };
