@@ -49,20 +49,3 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context: () => {
-    // Simulated user data
-    const user = {
-      id: 'USER_ID',
-      email: 'user@example.com',
-    };
-
-    return { user };
-  },
-});
-
-server.listen().then(({ url }) => {
-  console.log(`Server running at ${url}`);
-});

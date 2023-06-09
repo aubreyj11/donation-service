@@ -1,6 +1,8 @@
 import { Segment, Image, Button, Icon } from 'semantic-ui-react'
+import { useNavigate } from 'react-router-dom'
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <Segment basic padded="very">
       <div className='homePage-seg'>
@@ -9,7 +11,7 @@ function Home() {
     <div className='homePage-img'>
       <Image style={{ marginTop: "-430px", height: "730px", width: "1100px" }} src='food-Box.jpg' size='big' floated='right' />
       </div>
-      <Button animated color='blue' size='big' type='button' floated='center'>
+      <Button animated color='blue' size='big' type='button' floated='center' onClick={()=>{navigate('/about')}}>
       <Button.Content visible>Learn More</Button.Content>
       <Button.Content hidden>
         <Icon name='arrow right' />

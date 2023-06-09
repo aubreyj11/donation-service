@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const FoodDonation = require('./FoodDonation');
 
 const userSchema = new Schema({
     name: {
@@ -39,7 +40,8 @@ const userSchema = new Schema({
      avatar: {
         type: String,
         default: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1.webp"
-     }
+     },
+     foodDonations: [FoodDonation.schema]
 });
 
 // set up pre-save middleware to create password

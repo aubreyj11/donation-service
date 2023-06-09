@@ -3,7 +3,7 @@ import { useMutation, gql } from '@apollo/client';
 import { Button, Container, Form } from 'semantic-ui-react';
 import { loadStripe } from '@stripe/stripe-js';
 
-const stripePromise = loadStripe('YOUR_STRIPE_PUBLISHABLE_KEY');
+const stripePromise = loadStripe('STRIPE_KEY');
 
 const CREATE_PAYMENT_INTENT = gql`
   mutation CreatePaymentIntent($amount: Float!) {

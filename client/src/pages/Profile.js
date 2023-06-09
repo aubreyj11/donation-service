@@ -15,8 +15,8 @@ import {
 
 const Profile = () => {
 
+  //this count is used to change the chosen avatar image via avaSrc
   const [count, setCount] = useState(1);
-
   const avaSrc = `https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava${count}.webp`;
 
   const { data } = useQuery(GET_USER);
@@ -26,7 +26,6 @@ const Profile = () => {
   });
 
   const user = data?.getUser || {};
-  console.log(user);
 
   useEffect(() => {
     const savedCount = localStorage.getItem('count');
@@ -107,6 +106,24 @@ const Profile = () => {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">{user.address}</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>City</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{user.city}</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Zip</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{user.zipcode}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>
