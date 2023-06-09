@@ -15,17 +15,17 @@ import {
 
 const Profile = () => {
 
+  //this count is used to change the chosen avatar image via avaSrc
   const [count, setCount] = useState(1);
-
   const avaSrc = `https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava${count}.webp`;
 
   const { data } = useQuery(GET_USER);
   const [ changePhoto ] = useMutation(UPDATE_USER, {
     variables: { avatar: avaSrc },
+    refetchQueries: [{ query: GET_USER }],  
   });
 
   const user = data?.getUser || {};
-  console.log(user);
 
   useEffect(() => {
     const savedCount = localStorage.getItem('count');
@@ -57,7 +57,7 @@ const Profile = () => {
             <MDBCard className="mb-4">
               <MDBCardBody className="text-center">
                 <MDBCardImage
-                  src={user.avatar || avaSrc}
+                  src={user.avatar}
                   alt="avatar"
                   className="rounded-circle"
                   style={{ width: '150px' }}
@@ -106,6 +106,24 @@ const Profile = () => {
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">{user.address}</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>City</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{user.city}</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Zip</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">{user.zipcode}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
               </MDBCardBody>

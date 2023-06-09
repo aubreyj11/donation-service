@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import CharityPage from './pages/CharityPage';
+import About from './pages/About'
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {
@@ -78,6 +79,10 @@ function App() {
             <Route 
               path="*" 
               element={<NotFound />} 
+            />
+            <Route
+              path="/about"
+              element={<About/>}
             />
           </Routes>
             <Footer />
