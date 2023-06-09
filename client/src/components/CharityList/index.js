@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container, Header, List, Grid, Image, Divider, Button } from 'semantic-ui-react'
-import './CharityList.css'
 import ReactModal from '../Modal/index.js'
 import AuthService from "../../utils/auth";
 
@@ -23,9 +22,9 @@ const CharityList = () => {
                 <Header as='h4' content='Second Harvest Food Bank of Orange County' subheader='1 of 2 food banks in Orange County' textAlign='center' />
                 <Image src='assets/foodbank-logo-SH.png' size='large'  className='food-bank-img' centered />
                 <Divider horizontal />
-                    <Grid columns={2} container stackable>
+                    <Grid columns={2} container doubled>
                         <Grid.Column>
-                            <List relaxed>
+                            <List relaxed >
                                 <List.Item icon='phone' header='Phone Number'content='(949) 653-2900' />
                                 <List.Item icon='map' header='Address' content='8014 Marine Way, Irvine, CA 92618' />
                             </List>
@@ -42,7 +41,7 @@ const CharityList = () => {
                 <Header as='h4' content='Community Action Partnership of Orange County Food Bank' subheader='2 of 2 food banks in Orange County' textAlign='center' />
                 <Image src='assets/foodbank-logo-CAP.png' size='large' className='food-bank-img' centered />
                 <Divider horizontal />
-                    <Grid columns={2} container stackable>
+                    <Grid columns={2} container doubled>
                         <Grid.Column>
                             <List relaxed>
                                 <List.Item icon='phone' header='Phone Number'content='(714) 897-6670' />

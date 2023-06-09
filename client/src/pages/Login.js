@@ -1,17 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
+import { Container, Header,  } from 'semantic-ui-react';
 
 function Login(props) {
   return (
     <>
-      <div className="container my-1">
+      <Container style={{marginTop:'auto', marginBottom: 'auto', minHeight:'400px', display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
         <Link to="/signup">← Go to Signup</Link>
-      </div>
-      <h2 style={{textAlign: "center"}}>Login</h2>
-      <div style={{ margin: '20px', padding: '0px 20px 0px 20px' }}>
-         <LoginForm />
-      </div>
+        <Header as="h2" textAlign="center" content="Log In" />
+        <LoginForm />
+      </Container>
     </>
   );
 }
