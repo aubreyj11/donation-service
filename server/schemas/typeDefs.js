@@ -3,7 +3,8 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
 type FoodDonation {
     _id: ID
-    pickupTime: String
+    date: String
+    time: String
     address: String
     city: String
     zip: String
@@ -48,6 +49,7 @@ type PaymentIntent {
     clientSecret: ID!
 }
 
+
 type Mutation {
     createPaymentIntent(amount: Float!, userId: String!): PaymentIntent!
     updateUser(
@@ -55,6 +57,7 @@ type Mutation {
       ): User
     addUser(name: String!, email: String!, password: String!, address: String!, city: String!, zipcode: Int!, phone: String!, avatar: String): Auth
     login(email: String!, password: String!): Auth
+    addFoodDonation(date: String!, time: String!, address: String!, city: String!, zip: String!, comment: String!): User
 }`;
 
 module.exports = typeDefs;
