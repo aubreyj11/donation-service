@@ -18,12 +18,12 @@ const CharityList = () => {
          )}
         <Divider />
     <Container style={{margin: "0px 0px 30px 0px"}}>
-        <Grid columns={2} divided >
+        <Grid columns={2} divided stackable>
             <Grid.Column>
                 <Header as='h4' content='Second Harvest Food Bank of Orange County' subheader='1 of 2 food banks in Orange County' textAlign='center' />
                 <Image src='assets/foodbank-logo-SH.png' size='large'  className='food-bank-img' centered />
                 <Divider horizontal />
-                    <Grid columns={2} container >
+                    <Grid columns={2} container stackable>
                         <Grid.Column>
                             <List relaxed>
                                 <List.Item icon='phone' header='Phone Number'content='(949) 653-2900' />
@@ -42,7 +42,7 @@ const CharityList = () => {
                 <Header as='h4' content='Community Action Partnership of Orange County Food Bank' subheader='2 of 2 food banks in Orange County' textAlign='center' />
                 <Image src='assets/foodbank-logo-CAP.png' size='large' className='food-bank-img' centered />
                 <Divider horizontal />
-                    <Grid columns={2} container>
+                    <Grid columns={2} container stackable>
                         <Grid.Column>
                             <List relaxed>
                                 <List.Item icon='phone' header='Phone Number'content='(714) 897-6670' />
@@ -60,7 +60,7 @@ const CharityList = () => {
         </Grid>
     <Divider section />
         <Header as='h3' textAlign='center' content='Other Charities:' />
-        <Grid columns={3} divided>
+        <Grid columns={3}  doubling centered >
             <Grid.Column>
                 <Image src='assets/charity-logo-mk.png' size='small' centered />
                 <Header as='h4' content='Mary&#39;s Kitchen' textAlign='center' />

@@ -25,7 +25,7 @@ const DonationPage = () => {
       // Confirm the payment with the client secret and Stripe element
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
-          card: elements.getElement(CardElement),
+          // card: elements.getElement(CardElement),
         },
       });
 

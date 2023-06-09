@@ -75,7 +75,7 @@ function ReactModal() {
       <Modal.Actions>
         <Button
           content="Submit"
-          labelPosition='center'
+          labelPosition='right'
           icon='checkmark'
           onClick={() => setOpen(false)}
           positive
