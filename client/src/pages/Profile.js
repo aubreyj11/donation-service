@@ -14,7 +14,6 @@ import {
   MDBCardBody,
   MDBCardImage,
 } from 'mdb-react-ui-kit';
-import { Button } from 'semantic-ui-react';
 
 
 const Profile = () => {
