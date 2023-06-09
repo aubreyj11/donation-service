@@ -1,120 +1,68 @@
-const { User } = require('../models');
-const { AuthenticationError } = require('apollo-server-express');
-const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const { ApolloServer, gql } = require('apollo-server');
+const stripe = require('stripe')('YOUR_STRIPE_SECRET_KEY');
+const mongoose = require('mongoose');
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/donation_app', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Create a Donation model using Mongoose
+const Donation = mongoose.model('Donation', {
+  amount: Number,
+  userId: String,
+});
+
+const typeDefs = gql`
+  type PaymentIntent {
+    clientSecret: String!
+  }
+
+  type Mutation {
+    createPaymentIntent(amount: Float!, userId: String!): PaymentIntent!
+  }
+`;
 
 const resolvers = {
-    Query: {
-         User: async (parent, args, context) => {
-        if (context.user) {
-          const user = await User.findById(context.user._id).populate({
-            path: 'donations',
-          });
-  
-          user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-  
-          return user;
-        }
-  
-        throw new AuthenticationError('Not logged in');
-      },
+  Mutation: {
+    createPaymentIntent: async (_, { amount, userId }) => {
+      try {
+        // Create a payment intent
+        const paymentIntent = await stripe.paymentIntents.create({
+          amount: amount * 100, // Stripe expects amount in cents
+          currency: 'usd',
+          customer: userId, // Use the Stripe Customer ID associated with the user
+          payment_method_types: ['card'],
+        });
 
+        // Save the donation details to the database
+        const donation = new Donation({ amount, userId });
+        await donation.save();
 
-        order: async (parent, { _id }, context) => {
-          if (context.user) {
-            const user = await User.findById(context.user._id).populate({
-              path: 'orders.donations',
-              populate: 'category'
-            });
-    
-            return user.orders.id(_id);
-          }
-
-          const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
-            line_items,
-            mode: 'payment',
-            success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${url}/`
-          });
-    
-          return { session: session.id };
-        },
-        getUser: async (parent, args, context) => {
-          if (context.user) {
-            const user = await User.findById(context.user._id);   
-            return user;
-          }
-    
-          throw new AuthenticationError('Not logged in');
-        }
-      },
-      addDonate: async (parent, { Order }, context) => {
-        console.log(context);
-        if (context.user) {
-          const order = new Order({ donation });
-  
-          await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
-  
-          return order;
-        }
-  
-        throw new AuthenticationError('Not logged in');
-      },
-      updateUser: async (parent, args, context) => {
-        if (context.user) {
-          return await User.findByIdAndUpdate(context.user._id, args, { new: true });
-        }
-  
-        throw new AuthenticationError('Not logged in');
-      },
-
-    Mutation: {
-        updateUser: async (parent, {avatar}, context) => {
-            console.log(avatar);
-            try {
-                if (context.user)  {
-                    console.log(context.user)
-                    const user = await User.findOneAndUpdate(
-                        { _id: context.user._id }, 
-                        { avatar: avatar }, 
-                        {
-                            new: true,
-                            runValidators: true,
-                        }
-                    );
-
-    
-                    console.log(user)
-                    return user
-                }
-            } catch (err) {
-                console.log(err);
-            }
-            
-      
-            throw new AuthenticationError('Not logged in');
-          },
-        addUser: async (parents, { name, email, password, address, city, zipcode, phone, avatar }) => {
-          const user = await User.create({ name, email, password, address, city, zipcode, phone, avatar });
-          const token = signToken(user);
-
-          return { token, user };
-        },
-        login: async (parent, { email, password }) => {
-          //query database to find one user with email (which should be unique)
-          const user = await User.findOne({ email });
-        if (!user) {
-          throw new AuthenticationError('Invalid Login Credentials')
-        }
-        const correctPw = await user.isCorrectPassword(password);
-        if (!correctPw) {
-          throw new AuthenticationError('Invalid Login Credentials');
-        }
-        const token = signToken(user);
-        return { token, user };
+        return { clientSecret: paymentIntent.client_secret };
+      } catch (error) {
+        console.error('Error occurred while creating payment intent:', error);
+        throw new Error('An error occurred while processing the donation.');
       }
-    }
-  };
+    },
+  },
+};
 
-  module.exports = resolvers;
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: () => {
+    // Simulated user data
+    const user = {
+      id: 'USER_ID',
+      email: 'user@example.com',
+    };
+
+    return { user };
+  },
+});
+
+server.listen().then(({ url }) => {
+  console.log(`Server running at ${url}`);
+});
