@@ -14,7 +14,8 @@ query getUser {
         avatar
         foodDonations{
             _id
-            pickupTime
+            date
+            time
             address
             city
             zip

@@ -14,7 +14,7 @@ const CharityList = () => {
         <Header.Subheader>Find out more about our local food banks and the organizations serving our community.</Header.Subheader>
     </Header>
     {loggedIn ? (
-        <ReactModal /> ) : (<div><Button href='/login'>Donate</Button></div>
+        <ReactModal /> ) : (<div><Button href='/login'>Schedule Pick Up</Button></div>
          )}
         <Divider />
     <Container style={{margin: "0px 0px 30px 0px"}}>

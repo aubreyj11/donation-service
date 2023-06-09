@@ -11,7 +11,8 @@ console.log(date.toDateString())
  return (
     <>
     <div className='calendar-ctn'>
-        <ReactCalendar onChange={setDate} value={date} />
+        <ReactCalendar 
+        onChange={setDate} value={date} />
     </div>
     <div className='text-center'>
     Selected date: {date.toDateString()}
