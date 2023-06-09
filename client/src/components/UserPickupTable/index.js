@@ -10,7 +10,6 @@ const UserPickupTable= (props) => {
         <table className='table' style={{marginTop: "15px", border: "solid", borderRadius: "10px"}}>
         <thead>
           <tr>
-            <th>Confirmation ID</th>
             <th>Pickup Date</th>
             <th>Pickup Time</th>
             <th>Location</th>
@@ -20,9 +19,6 @@ const UserPickupTable= (props) => {
         <tbody>
             {props.pickups.map((item, index) => (
                 <tr key={index}>
-                    <td>
-                        {item._id}
-                    </td>
                     <td>
                         {item.date}
                     </td>

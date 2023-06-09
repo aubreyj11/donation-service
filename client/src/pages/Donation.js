@@ -23,11 +23,11 @@
 //       const stripe = await stripePromise;
 
       // Confirm the payment with the client secret and Stripe element
-      const result = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        },
-      });
+      // const result = await stripe.confirmCardPayment(clientSecret, {
+      //   payment_method: {
+      //     card: elements.getElement(CardElement),
+      //   },
+      // });
 
 //       //nessesary bounds used for payment failure
 //       if (result.error) {
@@ -43,31 +43,31 @@
 //     }
 //   };
 
-  return (
-    <Container>
-     <h1 style={{ fontSize: '7rem', fontFamily: 'cursive', marginBottom: '1.5rem' }}>Donation Page</h1>
-      <Form>
-        <Form.Field>
-          <label style={{ fontSize: '1.5rem' }}>Amount</label>
-          <input
-            type="number"
-            placeholder="Enter your donation amount"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            style={{
-              fontSize: '1.05rem',
-              padding: '0.5rem',
-              borderRadius: '4px',
-              width: '250px',
-            }}
-          />
-        </Form.Field>
-        <Button primary onClick={handleDonate} style={{ fontSize: '1.2rem', padding: '0.75rem 1rem' }}>
-          Donate
-        </Button>
-      </Form>
-    </Container>
-  );
-};
+//   return (
+//     <Container>
+//      <h1 style={{ fontSize: '7rem', fontFamily: 'cursive', marginBottom: '1.5rem' }}>Donation Page</h1>
+//       <Form>
+//         <Form.Field>
+//           <label style={{ fontSize: '1.5rem' }}>Amount</label>
+//           <input
+//             type="number"
+//             placeholder="Enter your donation amount"
+//             value={amount}
+//             onChange={(e) => setAmount(e.target.value)}
+//             style={{
+//               fontSize: '1.05rem',
+//               padding: '0.5rem',
+//               borderRadius: '4px',
+//               width: '250px',
+//             }}
+//           />
+//         </Form.Field>
+//         <Button primary onClick={handleDonate} style={{ fontSize: '1.2rem', padding: '0.75rem 1rem' }}>
+//           Donate
+//         </Button>
+//       </Form>
+//     </Container>
+//   );
+// };
 
 // export default DonationPage;

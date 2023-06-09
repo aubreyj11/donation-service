@@ -2,7 +2,6 @@ import React, {useState, useEffect } from "react";
 import { GET_USER } from "../utils/queries";
 import { UPDATE_USER } from "../utils/mutations";
 import { useQuery, useMutation } from '@apollo/client';
-import AuthService from "../utils/auth";
 import { Button } from 'semantic-ui-react'
 import {
   MDBCol,
@@ -53,7 +52,7 @@ const Profile = () => {
     
   return (
     <section style={{ backgroundColor: '#eee' }}>
-      <MDBContainer className="py-5">
+      <MDBContainer className="py-5" style={{alignItems:"center"}}>
         <MDBRow>
           <MDBCol lg="4">
             <MDBCard className="mb-4">
