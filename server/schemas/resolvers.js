@@ -1,28 +1,7 @@
-const { ApolloServer, gql } = require('apollo-server');
-const stripe = require('stripe')('YOUR_STRIPE_SECRET_KEY');
+const stripe = require('stripe')('stripe key placeholder');
 const mongoose = require('mongoose');
-
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/donation_app', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-// Create a Donation model using Mongoose
-const Donation = mongoose.model('Donation', {
-  amount: Number,
-  userId: String,
-});
-
-const typeDefs = gql`
-  type PaymentIntent {
-    clientSecret: String!
-  }
-
-  type Mutation {
-    createPaymentIntent(amount: Float!, userId: String!): PaymentIntent!
-  }
-`;
+const Donation = require('./models');
+const typeDefs = require('./typeDefs');
 
 const resolvers = {
   Mutation: {
@@ -49,3 +28,4 @@ const resolvers = {
   },
 };
 
+module.exports = resolvers;

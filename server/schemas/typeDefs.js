@@ -37,7 +37,12 @@ type Query {
     order: Session
 }
 
+type PaymentIntent {
+    clientSecret: String!
+}
+
 type Mutation {
+    createPaymentIntent(amount: Float!, userId: String!): PaymentIntent!
     updateUser(
         avatar: String
       ): User
