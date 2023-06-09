@@ -32,7 +32,7 @@ const CharityList = () => {
                         </Grid.Column>
                         <Grid.Column>
                             <List relaxed>
-                            <List.Item icon='mail' header='Email' content={<a href='mailto:test@test.com'>test@test.com</a>} />
+                            <List.Item icon='mail' header='Email' content={<a href='mailto:info@feedoc.org'>info@feedoc.org</a>} />
                             <List.Item icon='globe' header='Website' content={<a href='http://feedoc.org/'>feedoc.org</a>} />
                             </List>
                         </Grid.Column>
@@ -51,7 +51,7 @@ const CharityList = () => {
                         </Grid.Column>
                         <Grid.Column>
                             <List relaxed>
-                                <List.Item icon='mail' header='Email' content={<a href='mailto:test@test.com'>test@test.com</a>} />
+                                <List.Item icon='mail' header='Email' content={<a href='mailto:info@capoc.org'>info@capoc.org</a>} />
                                 <List.Item icon='globe' header='Website' content={<a href='http://ocfoodbank.org/'>ocfoodbank.org</a>} />
                             </List>
                         </Grid.Column>
