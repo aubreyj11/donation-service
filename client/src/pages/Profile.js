@@ -21,7 +21,6 @@ const Profile = () => {
   //this count is used to change the chosen avatar image via avaSrc
   const [count, setCount] = useState(1);
   const avaSrc = `https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava${count}.webp`;
-  const loggedIn = AuthService.loggedIn();
 
   const { data } = useQuery(GET_USER);
   const [ changePhoto ] = useMutation(UPDATE_USER, {

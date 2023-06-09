@@ -39,6 +39,7 @@ function ReactModal() {
         ...formState,
         [name]: value,
       });
+      console.log(formState)
     };
 
     const handleDateChange = (dateChoice) => {
@@ -46,6 +47,7 @@ function ReactModal() {
         ...formState,
         date: dateChoice.toDateString(),
       });
+      console.log(formState)
     };
 
     const handleTimeChange = (event) => {
@@ -54,6 +56,7 @@ function ReactModal() {
         ...formState,
         time: value,
       });
+      console.log(formState)
     }
 
     const handleFormSubmit = async (event) => {
@@ -61,10 +64,10 @@ function ReactModal() {
 
       if(!formState.date || !formState.time || !formState.address || !formState.city || !formState.zip || !formState.comment){
          setErrorText('Missing required information fields!')
-         return
-      } else if(errorText) {
+         console.log('Hey')
          return
       } else {
+        console.log("dumb")
           const mutationResponse = await addFoodDonation({
               variables: {
                 date: formState.date,
@@ -82,13 +85,14 @@ function ReactModal() {
 
   return (
     <div>
-    <Form onSubmit={handleFormSubmit} >
     <Modal
+      as={Form}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
       trigger={<Button >Schedule Pick Up</Button>}
       size='small'
+      onSubmit={handleFormSubmit}
     >
       <Modal.Header>Select a Scheduled Pick Up Day</Modal.Header>
       <Modal.Content>
@@ -105,36 +109,33 @@ function ReactModal() {
         <Modal.Description>
           <Header>Select A Pick Up Time</Header>
           <Menu compact>
-          <Dropdown
-            placeholder='Select a TIme'
-            fluid
-            selection
-            options={options}
-            onChange={handleTimeChange}
-             />
+          <Input placeholder='Time'
+              name='time'
+             onChange={handleChange} 
+             onBlur={handleBlank}/>
             </Menu>
             <p>
             We've found the following Address associated with your profile.
           </p>
-            <Input value={user.address}
-              name='Address'
+            <Input placeholder={user.address}
+              name='address'
              onChange={handleChange} 
              onBlur={handleBlank}/>
 
-            <Input value={user.city} 
-            name='City'
+            <Input placeholder={user.city} 
+            name='city'
             onChange={handleChange} 
             onBlur={handleBlank}/>
 
-            <Input value={user.zipcode}
-            name='ZipCode'
+            <Input placeholder={user.zipcode}
+            name='zip'
             onChange={handleChange} 
             onBlur={handleBlank}/>
 
           <Header>Additional Comments</Header>
           <TextArea placeholder='Please add any additional' 
           style={{ resize: "none"}} 
-          name='Comment'
+          name='comment'
           onChange={handleChange} 
           onBlur={handleBlank}/>
         </Modal.Description>
@@ -163,7 +164,6 @@ function ReactModal() {
       </div>
       )}
     </Modal>
-    </Form>
     </div>
   )
 }
