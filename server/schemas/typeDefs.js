@@ -10,6 +10,12 @@ type FoodDonation {
     comment: String
 }
 
+type Donation {
+    _id: ID
+    amount: Float
+    userId: String
+}
+
 type User {
     _id: ID
     name: String
@@ -21,6 +27,7 @@ type User {
     phone: String
     avatar: String
     foodDonations: [FoodDonation]
+    donations: [Donation]
 }
 
 type Auth {
@@ -37,7 +44,12 @@ type Query {
     order: Session
 }
 
+type PaymentIntent {
+    clientSecret: ID!
+}
+
 type Mutation {
+    createPaymentIntent(amount: Float!, userId: String!): PaymentIntent!
     updateUser(
         avatar: String
       ): User

@@ -20,6 +20,11 @@ query getUser {
             zip
             comment            
         }
+        donations{
+            _id
+            amount
+            userId
+        }
     }
 }`;
 
