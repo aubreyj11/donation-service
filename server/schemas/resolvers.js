@@ -2,8 +2,7 @@ const { User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('pk_test_51NGsraCQkZ4sTLVlAxyxwqDcGmDeKmoI6226SLNoBt9Qe9gcYiRUWi4CTIXJ4pqqO8Wp6uITa49l7XFGbvAfTDBz00jxdaatRC');
-const mongoose = require('mongoose');
-const Donation = require('./models');
+const Donation = require('../models');
 
 const resolvers = {
   Query: {

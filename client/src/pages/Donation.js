@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
 import { Button, Container, Form } from 'semantic-ui-react';
 import { loadStripe } from '@stripe/stripe-js';
+import { CREATE_PAYMENT_INTENT } from '../utils/mutations';
 
 const stripePromise = loadStripe('pk_test_51NGsraCQkZ4sTLVlAxyxwqDcGmDeKmoI6226SLNoBt9Qe9gcYiRUWi4CTIXJ4pqqO8Wp6uITa49l7XFGbvAfTDBz00jxdaatRC');
-
-
 
 const DonationPage = () => {
   const [amount, setAmount] = useState('');
@@ -46,18 +45,24 @@ const DonationPage = () => {
 
   return (
     <Container>
-      <h1>Donation Page</h1>
+     <h1 style={{ fontSize: '7rem', fontFamily: 'cursive', marginBottom: '1.5rem' }}>Donation Page</h1>
       <Form>
         <Form.Field>
-          <label>Amount</label>
+          <label style={{ fontSize: '1.5rem' }}>Amount</label>
           <input
             type="number"
             placeholder="Enter your donation amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
+            style={{
+              fontSize: '1.05rem',
+              padding: '0.5rem',
+              borderRadius: '4px',
+              width: '250px',
+            }}
           />
         </Form.Field>
-        <Button primary onClick={handleDonate}>
+        <Button primary onClick={handleDonate} style={{ fontSize: '1.2rem', padding: '0.75rem 1rem' }}>
           Donate
         </Button>
       </Form>

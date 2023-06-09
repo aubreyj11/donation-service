@@ -10,6 +10,11 @@ type FoodDonation {
     comment: String
 }
 
+type Donation {
+    _id: ID
+    amount: Float
+    userId: String
+}
 
 type User {
     _id: ID
@@ -40,7 +45,7 @@ type Query {
 }
 
 type PaymentIntent {
-    clientSecret: String!
+    clientSecret: ID!
 }
 
 type Mutation {
