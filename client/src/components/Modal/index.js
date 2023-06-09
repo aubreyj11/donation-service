@@ -81,6 +81,7 @@ function ReactModal() {
       }
 
   return (
+
     <div>
     <Form onSubmit={handleFormSubmit} >
     <Modal
@@ -89,7 +90,7 @@ function ReactModal() {
       open={open}
       trigger={<Button >Schedule Pick Up</Button>}
       size='small'
-    >
+
       <Modal.Header>Select a Scheduled Pick Up Day</Modal.Header>
       <Modal.Content>
         <div className='calendar-ctn'>
@@ -146,7 +147,7 @@ function ReactModal() {
         icon='checkmark' 
         positive />
       </Modal.Content>
-      <Modal.Actions>
+      <Modal.Actions style={{textAlign:'center'}}>
         <Button
           type='button'
           content="Close Modal"

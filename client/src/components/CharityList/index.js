@@ -1,31 +1,30 @@
 import React from 'react'
 import { Container, Header, List, Grid, Image, Divider, Button } from 'semantic-ui-react'
-import './CharityList.css'
 import ReactModal from '../Modal/index.js'
 import AuthService from "../../utils/auth";
 
 const CharityList = () => {
     const loggedIn = AuthService.loggedIn();
   return (
-
     <>
     <Header as='h2' textAlign='center'>
         Food Donation Centers
         <Header.Subheader>Find out more about our local food banks and the organizations serving our community.</Header.Subheader>
     </Header>
+    {/* if loggedIn, display donation signup modal, else button redirects to login */}
     {loggedIn ? (
         <ReactModal /> ) : (<div><Button href='/login'>Schedule Pick Up</Button></div>
          )}
         <Divider />
     <Container style={{margin: "0px 0px 30px 0px"}}>
-        <Grid columns={2} divided >
+        <Grid columns={2} divided stackable>
             <Grid.Column>
                 <Header as='h4' content='Second Harvest Food Bank of Orange County' subheader='1 of 2 food banks in Orange County' textAlign='center' />
                 <Image src='assets/foodbank-logo-SH.png' size='large'  className='food-bank-img' centered />
                 <Divider horizontal />
-                    <Grid columns={2} container >
+                    <Grid columns={2} container doubled>
                         <Grid.Column>
-                            <List relaxed>
+                            <List relaxed >
                                 <List.Item icon='phone' header='Phone Number'content='(949) 653-2900' />
                                 <List.Item icon='map' header='Address' content='8014 Marine Way, Irvine, CA 92618' />
                             </List>
@@ -42,7 +41,7 @@ const CharityList = () => {
                 <Header as='h4' content='Community Action Partnership of Orange County Food Bank' subheader='2 of 2 food banks in Orange County' textAlign='center' />
                 <Image src='assets/foodbank-logo-CAP.png' size='large' className='food-bank-img' centered />
                 <Divider horizontal />
-                    <Grid columns={2} container>
+                    <Grid columns={2} container doubled>
                         <Grid.Column>
                             <List relaxed>
                                 <List.Item icon='phone' header='Phone Number'content='(714) 897-6670' />
@@ -60,7 +59,7 @@ const CharityList = () => {
         </Grid>
     <Divider section />
         <Header as='h3' textAlign='center' content='Other Charities:' />
-        <Grid columns={3} divided>
+        <Grid columns={3}  doubling centered >
             <Grid.Column>
                 <Image src='assets/charity-logo-mk.png' size='small' centered />
                 <Header as='h4' content='Mary&#39;s Kitchen' textAlign='center' />
