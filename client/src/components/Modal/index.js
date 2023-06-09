@@ -1,4 +1,5 @@
 import React from 'react'
+import {Navigate} from 'react'
 import { GET_USER } from '../../utils/queries'
 import { useQuery } from '@apollo/client'
 import AuthService from "../../utils/auth";
@@ -20,13 +21,15 @@ function ReactModal() {
     const [open, setOpen] = React.useState(false)
 
   return (
+    <div>
     <Modal
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button>Donate</Button>}
+      trigger={<Button >Donate</Button>}
       size='small'
     >
+      
       <Modal.Header>Select a Scheduled Pick Up Day</Modal.Header>
       <Modal.Content>
         <div className='calendar-ctn'>
@@ -79,7 +82,8 @@ function ReactModal() {
         />
       </Modal.Actions>
     </Modal>
+    </div>
   )
 }
 
-export default ReactModal
+export default ReactModal;
