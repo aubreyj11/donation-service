@@ -26,7 +26,7 @@ function ReactModal() {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button >Donate</Button>}
+      trigger={<Button color='blue' >Donate</Button>}
       size='small'
     >
       

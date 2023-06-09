@@ -94,7 +94,7 @@ const LoginForm = () => {
 						</div>
 					)}
         
-        <Button type='submit'>Submit</Button>
+        <Button color='blue' type='submit'>Submit</Button>
         </Form>
         )
 }
