@@ -77,6 +77,7 @@
 
 
 
+
 .avaBtn {
   text-align: center;
   text-decoration: none;
@@ -231,6 +232,7 @@
   .home-text {
     font-size: 8px;
     width: 300px;
+    margin-right: 50px;
   }
   .homePage-img {
     margin-top: 30px;
@@ -260,7 +262,15 @@
     font-size: 12px;
     width: 150px;
     padding: 10px;
-    margin-left: -100px;
+    margin-left: -50px;
+  }
+
+  .avaSmall {
+    margin-left: 40px;
+  }
+
+  .footer-ctn {
+    width: 420px;
   }
   .mx-auto{
     margin-left: auto;

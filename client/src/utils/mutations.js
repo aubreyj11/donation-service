@@ -58,3 +58,18 @@ export const UPDATE_USER = gql`
       avatar
     }
   }`;
+
+  export const CREATE_PAYMENT_INTENT = gql`
+  mutation createPaymentIntent(
+    $amount: Float! 
+    $userId: String! 
+    ) {
+      createPaymentIntent(
+        amount: $amount
+        userId: $userId
+      ) {
+        _id
+        amount
+        userId
+      }
+    }`;
