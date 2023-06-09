@@ -1,38 +1,103 @@
 import React from 'react'
+import { ADD_FOOD_DONATION } from '../../utils/mutations';
 import { GET_USER } from '../../utils/queries'
 import { useQuery, useMutation } from '@apollo/client'
-import AuthService from "../../utils/auth";
 import { Calendar as ReactCalendar } from 'react-calendar'
 import { Button, Header, Modal, Menu, Dropdown, Input, Form, TextArea } from 'semantic-ui-react'
 
 
 function ReactModal() {
-    const loggedIn = AuthService.loggedIn();
+
     const { data } = useQuery(GET_USER);
+    const [addFoodDonation] = useMutation(ADD_FOOD_DONATION);
     const user = data?.getUser || {};
     const options = [
-        { key : 1, text: 'Morning', value: 1},
-        { key : 2, text: 'Afternoon', value: 2},
-        { key : 3, text: 'Evening', value: 3},
+      { key : 1, text: 'Morning', value: 1},
+      { key : 2, text: 'Afternoon', value: 2},
+      { key : 3, text: 'Evening', value: 3},
     ]
-    
+    const [errorMessage, setErrorMessage] = React.useState("");
+    const [formState , setFormState] = React.useState({ date: '', time: '', address: '', city: '', zip: '', comment: ''})
+    const [errorText, setErrorText] = React.useState('')
     const [date, setDate] = React.useState(new Date())    
     const [open, setOpen] = React.useState(false)
 
+    function handleBlank(e) {
+      if (!e.target.value.length) {
+        setErrorMessage(`${e.target.name} is required.`);
+      } else {
+        setErrorMessage("");
+      }
+      if (!errorMessage) {
+        setFormState({ ...formState, [e.target.name]: e.target.value });        
+      }
+    }      
+
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setFormState({
+        ...formState,
+        [name]: value,
+      });
+    };
+
+    const handleDateChange = (dateChoice) => {
+      setFormState({
+        ...formState,
+        date: dateChoice.toDateString(),
+      });
+    };
+
+    const handleTimeChange = (event) => {
+      const { value } = event.target;
+      setFormState({
+        ...formState,
+        time: value,
+      });
+    }
+
+    const handleFormSubmit = async (event) => {
+      event.preventDefault();
+
+      if(!formState.date || !formState.time || !formState.address || !formState.city || !formState.zip || !formState.comment){
+         setErrorText('Missing required information fields!')
+         return
+      } else if(errorText) {
+         return
+      } else {
+          const mutationResponse = await addFoodDonation({
+              variables: {
+                date: formState.date,
+                time: formState.time,
+                address: formState.address,
+                city: formState.city,
+                zip: formState.zip,
+                comment: formState.comment
+              }
+            })
+            console.log(mutationResponse)
+      }
+
+      }
+
   return (
     <div>
+    <Form onSubmit={handleFormSubmit} >
     <Modal
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button >Donate</Button>}
+      trigger={<Button >Schedule Pick Up</Button>}
       size='small'
     >
       <Modal.Header>Select a Scheduled Pick Up Day</Modal.Header>
-      <form>
       <Modal.Content>
         <div className='calendar-ctn'>
-            <ReactCalendar onChange={setDate} value={date} />
+            <ReactCalendar 
+            onChange={(event) => {
+              setDate(event);
+              handleDateChange(date);
+            }} value={date} />
         </div>
         <div className='text-center'>
             Selected date: {date.toDateString()}
@@ -45,44 +110,60 @@ function ReactModal() {
             fluid
             selection
             options={options}
+            onChange={handleTimeChange}
              />
             </Menu>
             <p>
             We've found the following Address associated with your profile.
           </p>
-          {loggedIn ? (
-            <Input value={user.address}/>
-          ) : (
-            <Input placeholder='1234 Main St' />
-          )}
-          {loggedIn ? (
-            <Input value={user.city}/>
-          ) : (
-            <Input placeholder='City' />
-          )}
-          {loggedIn ? (
-            <Input value={user.zipcode}/>
-          ) : (
-            <Input placeholder='Zip Code' />
-          )}
+            <Input value={user.address}
+              name='Address'
+             onChange={handleChange} 
+             onBlur={handleBlank}/>
+
+            <Input value={user.city} 
+            name='City'
+            onChange={handleChange} 
+            onBlur={handleBlank}/>
+
+            <Input value={user.zipcode}
+            name='ZipCode'
+            onChange={handleChange} 
+            onBlur={handleBlank}/>
+
           <Header>Additional Comments</Header>
-          <Form>
-          <TextArea placeholder='Additional Comments'  style={{ resize: "none"}}/>
-          </Form>
+          <TextArea placeholder='Please add any additional' 
+          style={{ resize: "none"}} 
+          name='Comment'
+          onChange={handleChange} 
+          onBlur={handleBlank}/>
         </Modal.Description>
+        <Button 
+        type='submit' 
+        content="Submit" 
+        labelPosition='center' 
+        floated='left' 
+        icon='checkmark' 
+        positive />
       </Modal.Content>
       <Modal.Actions>
         <Button
-          content="Submit"
+          type='button'
+          content="Close Modal"
           labelPosition='center'
           floated='right'
-          icon='checkmark'
+          icon='x'
           onClick={() => setOpen(false)}
           positive
         />
       </Modal.Actions>
-    </form>
+      {errorMessage && (
+        <div>
+        <p className="error-text" style={{margin: "0px 0px 10px 0px", border: "solid", backgroundColor: "#fa87b5", borderRadius: "5px", height: "40px", color: "red", fontWeight: "bold"}}>{errorMessage}</p>
+      </div>
+      )}
     </Modal>
+    </Form>
     </div>
   )
 }

@@ -14,11 +14,17 @@ query getUser {
         avatar
         foodDonations{
             _id
-            pickupTime
+            date
+            time
             address
             city
             zip
             comment            
+        }
+        donations{
+            _id
+            amount
+            userId
         }
     }
 }`;

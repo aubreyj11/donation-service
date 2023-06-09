@@ -59,26 +59,44 @@ export const UPDATE_USER = gql`
     }
   }`;
 
-// export const ADD_DONATION = gql`
-// mutation addDonation(
-//   $pickupTime: Date!
-//   $address: String!
-//   $city: String!
-//   $zip: Int!
-//   $comment: String
-//   ) { 
-//     addDonation(
-//       pickupTime: $pickupTime
-//       address: $address
-//       city: $city
-//       zip: $zip
-//       comment: $comment
-//     ) {
-//       _id
-//       pickupTime
-//       address
-//       city
-//       zip
-//       comment
-//     }
-//   }`;
+  export const ADD_FOOD_DONATION = gql`
+  mutation addFoodDonation(
+    $date: String!
+    $time: String!
+    $address: String!
+    $city: String!
+    $zip: String!
+    $comment: String
+    ) { 
+      addFoodDonation(
+        date: $date
+        time: $time
+        address: $address
+        city: $city
+        zip: $zip
+        comment: $comment
+      ) {
+        _id
+        date
+        time
+        address
+        city
+        zip
+        comment
+      }
+    }`;
+
+  export const CREATE_PAYMENT_INTENT = gql`
+  mutation createPaymentIntent(
+    $amount: Float! 
+    $userId: String! 
+    ) {
+      createPaymentIntent(
+        amount: $amount
+        userId: $userId
+      ) {
+        _id
+        amount
+        userId
+      }
+    }`;
