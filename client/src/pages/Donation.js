@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
-import { Button, Container, Form } from 'semantic-ui-react';
+import { Header, Button, Container, Form, Segment } from 'semantic-ui-react';
 import { loadStripe } from '@stripe/stripe-js';
 import { CREATE_PAYMENT_INTENT } from '../utils/mutations';
 
@@ -44,8 +44,9 @@ const DonationPage = () => {
   };
 
   return (
-    <Container>
-     <h1 style={{ fontSize: '7rem', fontFamily: 'cursive', marginBottom: '1.5rem' }}>Donation Page</h1>
+    <Container style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'space-between', textAlign:'center'}}>
+     <Header as={'h2'} style={{ fontSize: '4rem', marginBottom: '1.5rem' }} content='Donation Page' />
+     <Segment attached='bottom'>
       <Form>
         <Form.Field>
           <label style={{ fontSize: '1.5rem' }}>Amount</label>
@@ -66,6 +67,7 @@ const DonationPage = () => {
           Donate
         </Button>
       </Form>
+      </Segment>
     </Container>
   );
 };
