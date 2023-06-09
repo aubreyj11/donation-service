@@ -2,15 +2,18 @@ import React from 'react'
 import { Container, Header, List, Grid, Image, Divider } from 'semantic-ui-react'
 import './CharityList.css'
 
+
 const CharityList = () => {
+
   return (
     <>
     <Header as='h2' textAlign='center'>
         Food Donation Centers
         <Header.Subheader>Find out more about our local food banks and the organizations serving our community.</Header.Subheader>
+
     </Header>
     <Divider />
-    <Container style={{margin: "0px 0px 30px 0px"}}>
+    <Container>
         <Grid columns={2} divided >
             <Grid.Column>
                 <Header as='h4' content='Second Harvest Food Bank of Orange County' subheader='1 of 2 food banks in Orange County' textAlign='center' />

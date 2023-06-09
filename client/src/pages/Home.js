@@ -1,8 +1,13 @@
 import { Segment, Image, Button, Icon } from 'semantic-ui-react'
 import { useNavigate } from 'react-router-dom'
 
+
+
+
+
 function Home() {
   const navigate = useNavigate();
+
   return (
     <Segment basic padded="very">
       <div className='homePage-seg'>
@@ -16,9 +21,10 @@ function Home() {
       <Button.Content hidden>
         <Icon name='arrow right' />
       </Button.Content>
-    </Button>
+      </Button> 
       </div>
     </Segment>
+
   )
 }
 
