@@ -262,6 +262,10 @@
     padding: 10px;
     margin-left: -100px;
   }
+  .mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @media screen and (max-width: 484px) {
