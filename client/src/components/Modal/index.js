@@ -21,12 +21,12 @@ function ReactModal() {
     const [open, setOpen] = React.useState(false)
 
   return (
-    
+    <div style={{textAlign: 'center'}}>
     <Modal
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button color='blue' className='mx-auto'>Donate</Button>}
+      trigger={<Button color='blue'>Donate</Button>}
     >
     
       <Modal.Header>Select a Scheduled Pick Up Day</Modal.Header>
@@ -80,7 +80,7 @@ function ReactModal() {
           positive
         />
       </Modal.Actions>
-    </Modal>
+    </Modal></div>
   )
 }
 
