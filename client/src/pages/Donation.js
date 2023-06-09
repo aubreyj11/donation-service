@@ -5,13 +5,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe('pk_test_51NGsraCQkZ4sTLVlAxyxwqDcGmDeKmoI6226SLNoBt9Qe9gcYiRUWi4CTIXJ4pqqO8Wp6uITa49l7XFGbvAfTDBz00jxdaatRC');
 
-const CREATE_PAYMENT_INTENT = gql`
-  mutation CreatePaymentIntent($amount: Float!) {
-    createPaymentIntent(amount: $amount) {
-      clientSecret
-    }
-  }
-`;
+
 
 const DonationPage = () => {
   const [amount, setAmount] = useState('');

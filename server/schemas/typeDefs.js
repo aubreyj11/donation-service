@@ -10,6 +10,7 @@ type FoodDonation {
     comment: String
 }
 
+
 type User {
     _id: ID
     name: String
@@ -21,6 +22,7 @@ type User {
     phone: String
     avatar: String
     foodDonations: [FoodDonation]
+    donations: [Donation]
 }
 
 type Auth {
