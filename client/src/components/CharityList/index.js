@@ -1,15 +1,22 @@
 import React from 'react'
-import { Container, Header, List, Grid, Image, Divider } from 'semantic-ui-react'
+import { Container, Header, List, Grid, Image, Divider, Button } from 'semantic-ui-react'
 import './CharityList.css'
+import ReactModal from '../Modal/index.js'
+import AuthService from "../../utils/auth";
 
 const CharityList = () => {
+    const loggedIn = AuthService.loggedIn();
   return (
+
     <>
     <Header as='h2' textAlign='center'>
         Food Donation Centers
         <Header.Subheader>Find out more about our local food banks and the organizations serving our community.</Header.Subheader>
     </Header>
-    <Divider />
+    {loggedIn ? (
+        <ReactModal /> ) : (<div><Button href='/login'>Donate</Button></div>
+         )}
+        <Divider />
     <Container style={{margin: "0px 0px 30px 0px"}}>
         <Grid columns={2} divided >
             <Grid.Column>
