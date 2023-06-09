@@ -1,5 +1,6 @@
 import React from 'react'
-import { Grid, Image, Button } from 'semantic-ui-react'
+import { Grid, Image} from 'semantic-ui-react'
+import Modal from '../components/Modal'
 
 const About = () => (
   <Grid celled>
@@ -9,8 +10,8 @@ const About = () => (
       </Grid.Column>
       <Grid.Column width={12}>
         <h1> About ChariTeam</h1>
-        <p style={{margin: "30px 0px 0px 0px"}}>We have a mission here at ChariTeam to direct preventable foodwaste in a way that is most helpful to our community (Orange County). Our goal is to take the inconvenience out of giving back to your community in anyway possible. A major hurdle in properly handling large amounts of food waste, is not the desire to give back, but the effort, time, and money it takes to direct your resources in the correct manner. We are a non-profit aimed at alleviating this issue. Do you not know where to take your foodwaste? Do you lack the methods or manpower to transport it to the correct place? That's where we come in! Our team of drivers will pick up your usable waste and get it into the proper hands and from there to the people who need it most. Simply sign up and schedule a pick up from us!</p>
-        <Button color="blue" style={{margin: "30px 0px 0px 0px"}}>Schedule a Pickup</Button>
+        <p style={{margin: "30px 0px 20px 0px"}}>We have a mission here at ChariTeam to direct preventable foodwaste in a way that is most helpful to our community (Orange County). Our goal is to take the inconvenience out of giving back to your community in anyway possible. A major hurdle in properly handling large amounts of food waste, is not the desire to give back, but the effort, time, and money it takes to direct your resources in the correct manner. We are a non-profit aimed at alleviating this issue. Do you not know where to take your foodwaste? Do you lack the methods or manpower to transport it to the correct place? That's where we come in! Our team of drivers will pick up your usable waste and get it into the proper hands and from there to the people who need it most. Simply sign up and schedule a pick up from us!</p>
+        <Modal/>
       </Grid.Column>
     </Grid.Row>
 
