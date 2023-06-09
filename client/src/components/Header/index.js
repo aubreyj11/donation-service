@@ -33,7 +33,7 @@ const HeaderContainer = () => {
             <Header.Content className='headerStatus'>
               Logged in as <span style={{color: 'blue'}}>{loggedIn ? user.name : 'Guest'}</span>
             </Header.Content>
-              <Image src={user.avatar} avatar size='small' />
+              <Image src={user.avatar} className='avaSmall' avatar size='small' />
           </Header>
         </Link> 
         </Grid.Column>
