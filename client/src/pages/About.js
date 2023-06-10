@@ -3,7 +3,7 @@ import { Grid, Image} from 'semantic-ui-react'
 import Modal from '../components/Modal'
 
 const About = () => (
-  <Grid celled='internally' centered>
+  <Grid celled='internally' centered stackable>
     <Grid.Row>
       <Grid.Column width={5}>
         <Image src={require('../assets/images/Foodbank1.jpg')} alt="Foodbank, happy to give back"/>
@@ -20,7 +20,7 @@ const About = () => (
            We are a non-profit aimed at alleviating this issue. Do you not know where to take your foodwaste? Do you lack the methods or manpower to transport it to the correct place? 
            That's where we come in! Our team of drivers will pick up your usable waste and get it into the proper hands and from there to the people who need it most. Simply sign up and schedule a pick up from us!
         </p>
-        <Modal/>
+        <Modal />
       </Grid.Column>
     </Grid.Row>
 
