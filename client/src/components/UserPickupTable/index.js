@@ -6,7 +6,7 @@ const UserPickupTable= (props) => {
     return(
         <>
         <ReactModal style={{marginTop:"15px"}}></ReactModal>
-        <h1 style={{marginTop:"15px"}}>Shceduled Pickups</h1>
+        <h1 style={{marginTop:"15px"}}>Scheduled Pickups</h1>
         <table className='table' style={{marginTop: "15px", border: "solid", borderRadius: "10px"}}>
         <thead>
           <tr>
