@@ -98,5 +98,6 @@ export const UPDATE_USER = gql`
         _id
         amount
         userId
+        clientSecret
       }
     }`;

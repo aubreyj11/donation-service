@@ -15,6 +15,7 @@ type Donation {
     _id: ID
     amount: Float
     userId: String
+    clientSecret: String
 }
 
 type User {
@@ -45,13 +46,8 @@ type Query {
     order: Session
 }
 
-type PaymentIntent {
-    clientSecret: ID!
-}
-
-
 type Mutation {
-    createPaymentIntent(amount: Float!, userId: String!): PaymentIntent!
+    createPaymentIntent(amount: Float!, userId: String!): Donation
     updateUser(
         avatar: String
       ): User
