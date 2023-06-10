@@ -2,8 +2,6 @@ import React, {useState, useEffect } from "react";
 import { GET_USER } from "../utils/queries";
 import { UPDATE_USER } from "../utils/mutations";
 import { useQuery, useMutation } from '@apollo/client';
-import AuthService from "../utils/auth";
-import ReactModal from "../components/Modal";
 import { Button } from 'semantic-ui-react'
 import {
   MDBCol,
@@ -14,6 +12,7 @@ import {
   MDBCardBody,
   MDBCardImage,
 } from 'mdb-react-ui-kit';
+import UserPickupTable from "../components/UserPickupTable";
 
 
 const Profile = () => {
@@ -21,7 +20,6 @@ const Profile = () => {
   //this count is used to change the chosen avatar image via avaSrc
   const [count, setCount] = useState(1);
   const avaSrc = `https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava${count}.webp`;
-  const loggedIn = AuthService.loggedIn();
 
   const { data } = useQuery(GET_USER);
   const [ changePhoto ] = useMutation(UPDATE_USER, {
@@ -54,8 +52,7 @@ const Profile = () => {
     
   return (
     <section style={{ backgroundColor: '#eee' }}>
-      <MDBContainer className="py-5">
-
+      <MDBContainer className="py-5" style={{alignItems:"center"}}>
         <MDBRow>
           <MDBCol lg="4">
             <MDBCard className="mb-4">
@@ -133,8 +130,10 @@ const Profile = () => {
                 </MDBRow>
               </MDBCardBody>
             </MDBCard>
-                    <ReactModal />
           </MDBCol>
+        </MDBRow>
+        <MDBRow>
+          <UserPickupTable pickups={user.foodDonations}/>
         </MDBRow>
       </MDBContainer>
     </section>
