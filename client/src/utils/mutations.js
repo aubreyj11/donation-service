@@ -66,7 +66,7 @@ export const UPDATE_USER = gql`
     $address: String!
     $city: String!
     $zip: String!
-    $comment: String
+    $comment: String!
     ) { 
       addFoodDonation(
         date: $date

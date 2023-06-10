@@ -53,7 +53,7 @@ type Mutation {
       ): User
     addUser(name: String!, email: String!, password: String!, address: String!, city: String!, zipcode: Int!, phone: String!, avatar: String): Auth
     login(email: String!, password: String!): Auth
-    addFoodDonation(date: String!, time: String!, address: String!, city: String!, zip: String!, comment: String!): User
+    addFoodDonation(date: String!, time: String!, address: String!, city: String!, zip: String!, comment: String!): FoodDonation
 }`;
 
 module.exports = typeDefs;
