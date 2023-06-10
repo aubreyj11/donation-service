@@ -82,6 +82,10 @@
   max-height: 215px;;
 }
 
+.schedule {
+  color: black;
+}
+
 .avaBtn {
   text-align: center;
   text-decoration: none;
