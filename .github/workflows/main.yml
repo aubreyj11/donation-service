@@ -1,0 +1,15 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.11
+        with:
+          heroku_api_key: ${{secrets.fcde5ce0-1134-4f97-bb9e-84053b5cbdd1}}
+          heroku_app_name: "stormy-cliffs-21918"
+          heroku_email: "aubreylaura11@gmail.com"
