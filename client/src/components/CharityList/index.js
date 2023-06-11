@@ -13,7 +13,7 @@ const CharityList = () => {
     </Header>
     {/* if loggedIn, display donation signup modal, else button redirects to login */}
     {loggedIn ? (
-        <ReactModal /> ) : (<div><Button href='/login'>Schedule Pick Up</Button></div>
+        <div className='mx-auto'><ReactModal /></div> ) : (<div className='mx-auto'><Button href='/login'>Schedule Pickup</Button></div>
          )}
         <Divider />
     <Container style={{margin: "0px 0px 30px 0px"}}>
