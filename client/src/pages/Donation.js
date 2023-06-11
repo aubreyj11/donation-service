@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { Button, Container, Form } from 'semantic-ui-react';
+import { Button, Container, Form, Input, Label } from 'semantic-ui-react';
 import { loadStripe } from '@stripe/stripe-js';
 import { CREATE_PAYMENT_INTENT } from '../utils/mutations';
 import { GET_USER } from '../utils/queries';
@@ -53,23 +53,20 @@ const DonationPage = () => {
   };
 
   return (
-    <Container>
-      <h1 style={{ fontSize: '7rem', fontFamily: 'cursive', marginBottom: '1.5rem' }}>Donation Page</h1>
+    <Container className='text-center'>
+      <h1 style={{ fontSize: '5rem', marginBottom: '1.5rem' }}>Donation Page</h1>
+      
       <Form>
         <Form.Field>
-          <label style={{ fontSize: '1.5rem' }}>Amount</label>
-          <input
+          <Input
             type="number"
+            label='Enter Donation Amount'
+            labelPosition='left'
             placeholder="Enter your donation amount"
             value={donationAmount}
             onChange={(e) => setDonationAmount(e.target.value)}
-            style={{
-              fontSize: '1.05rem',
-              padding: '0.5rem',
-              borderRadius: '4px',
-              width: '250px',
-            }}
-          />
+            size='large'
+            />
         </Form.Field>
         {!showCheckoutForm && ( // Render the button only if the form is not shown
           <Button primary onClick={handleButtonClick} style={{ fontSize: '1.2rem', padding: '0.75rem 1rem' }}>

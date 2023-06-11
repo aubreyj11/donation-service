@@ -163,6 +163,7 @@ function ReactModal() {
       </div>
       )}
     </Modal>
+    </Form>
     </div>
   )
 }
