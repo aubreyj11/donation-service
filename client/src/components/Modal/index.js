@@ -84,17 +84,17 @@ function ReactModal() {
       }
 
   return (
-
-    <div>
+    <div style={{textAlign: 'center'}}>
+    <Form onSubmit={handleFormSubmit} >
     <Modal
       as={Form}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true) }
       open={open}
-      trigger={<Button color='blue' >Schedule Pick Up</Button>}
+      trigger={<Button color='blue'>Schedule a Pickup</Button>}
       size='small'
-      onSubmit={handleFormSubmit}
     >
+    
       <Modal.Header>Select a Scheduled Pick Up Day</Modal.Header>
       <Modal.Content>
         <div className='calendar-ctn'>
@@ -149,8 +149,8 @@ function ReactModal() {
         />
          <Button
           type='button'
-          content="Close"
-          labelPosition='center'
+          content="Close Modal"
+      
           floated='right'
           icon='x'
           onClick={() => setOpen(false)}
@@ -163,6 +163,7 @@ function ReactModal() {
       </div>
       )}
     </Modal>
+    </Form>
     </div>
   )
 }

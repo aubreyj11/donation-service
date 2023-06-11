@@ -1,13 +1,14 @@
 import React  from 'react'
 import ReactModal from  '../Modal'
+import { Header } from 'semantic-ui-react';
 
 
 const UserPickupTable= (props) => {
     return(
         <>
         <ReactModal style={{marginTop:"15px"}}></ReactModal>
-        <h1 style={{marginTop:"15px"}}>Shceduled Pickups</h1>
-        <table className='table' style={{marginTop: "15px", border: "solid", borderRadius: "10px"}}>
+        <Header as={'h2'} style={{marginTop:"15px", borderBottom:'solid #2E9CEF'}} content='Scheduled Pickups' />
+        <table className='ui table' style={{marginTop: "15px", borderRadius: "10px"}}>
         <thead>
           <tr>
             <th>Pickup Date</th>

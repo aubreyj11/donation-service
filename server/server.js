@@ -6,7 +6,7 @@ const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001 || process.env.MONGODB_URI;
 const app = express();
 const server = new ApolloServer({
   typeDefs,
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Serve up static assets
-app.use('/images', express.static(path.join(__dirname, '../client/images')));
+app.use('/images', express.static(path.join(__dirname, '../client/src/assets/images')));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
