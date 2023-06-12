@@ -6,7 +6,7 @@ const About = () => (
   <Grid celled='internally' centered stackable>
     <Grid.Row>
       <Grid.Column width={5}>
-        <Image src={require('../assets/images/Foodbank1.jpg')} alt="Foodbank, happy to give back"/>
+        <Image src='assets/Foodbank1.jpg' alt="Foodbank, happy to give back"/>
       </Grid.Column>
       <Grid.Column width={8}>
         <h1> About ChariTeam</h1>
@@ -34,7 +34,7 @@ const About = () => (
       </Grid.Column>
       <Grid.Column width={5}>
         <a href="https://table2table.org/understand-the-types-of-food-waste/" target="_blank" rel="noreferrer">
-            <Image src={require('../assets/images/foodwaste1.jpg')} alt="understanding food waste"/>
+            <Image src='assets/foodwaste1.jpg' alt="understanding food waste"/>
         </a>
       </Grid.Column>
     </Grid.Row>

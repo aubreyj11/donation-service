@@ -27,7 +27,7 @@ This is a React application that is designed to help restaurants find charities 
 To get this app working, simply visit the deployed link. From there, users can log in and navigate the site as needed. 
 
 
-View our deployed app [HERE](link) !
+View our deployed app [HERE](https://sleepy-plateau-67622.herokuapp.com/).
 <br>
 
 
