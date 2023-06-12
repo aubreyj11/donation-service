@@ -37,7 +37,7 @@ const CheckoutForm = ({ createPaymentIntent, user }) => {
       // Retrieve the client secret from the response
      const { clientSecret } = data.data.createPaymentIntent;
        // Confirm the card payment using Stripe.js
-     const stripe = await stripePromise;
+    //  const stripe = await stripePromise;
      const confirmedPayment = await stripe.confirmCardPayment(clientSecret, {
        payment_method: {
          card: {
