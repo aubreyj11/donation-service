@@ -39,7 +39,7 @@ const CharityList = () => {
             </Grid.Column>
             <Grid.Column>
                 <Header as='h4' content='Community Action Partnership of Orange County Food Bank' subheader='2 of 2 food banks in Orange County' textAlign='center' />
-                <Image src='assets/foodbank-logo-CAP.png' size='large' className='food-bank-img' centered />
+                <Image src='assets/foodBank-logo-CAP.png' size='large' className='food-bank-img' centered />
                 <Divider horizontal />
                     <Grid columns={2} container doubled>
                         <Grid.Column>
