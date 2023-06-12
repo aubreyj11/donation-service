@@ -53,7 +53,7 @@ const Profile = () => {
   
     // Render the profile component
   return (
-    <section style={{ backgroundColor: '#eee' }}>
+    <section>
       <MDBContainer className="py-5" style={{alignItems:"center"}}>
         <MDBRow>
           <MDBCol lg="4">

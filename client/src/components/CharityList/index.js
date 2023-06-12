@@ -4,6 +4,7 @@ import ReactModal from '../Modal/index.js'
 import AuthService from "../../utils/auth";
 
 const CharityList = () => {
+    // Use AuthService to check if user is logged in
     const loggedIn = AuthService.loggedIn();
   return (
     <>
@@ -17,6 +18,7 @@ const CharityList = () => {
          )}
         <Divider />
     <Container style={{margin: "0px 0px 30px 0px"}}>
+        {/* Food Bank Grid Columns */}
         <Grid columns={2} divided stackable>
             <Grid.Column>
                 <Header as='h4' content='Second Harvest Food Bank of Orange County' subheader='1 of 2 food banks in Orange County' textAlign='center' />
@@ -59,6 +61,7 @@ const CharityList = () => {
         </Grid>
     <Divider section />
         <Header as='h3' textAlign='center' content='Other Charities:' />
+        {/* 'Partnered' Charities Grid Columns */}
         <Grid columns={3}  doubling centered >
             <Grid.Column>
                 <Image src='assets/charity-logo-mk.png' size='small' centered />
