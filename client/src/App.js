@@ -25,11 +25,12 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { StoreProvider } from './utils/GlobalState';
 
-
+// Create an HTTP link for Apollo Client
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
+// Create an auth link to set the authorization header
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
   return {
@@ -45,8 +46,10 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+// Check if the user is logged in
 const loggedIn = AuthService.loggedIn();
 
+// Render the App component
 function App() {
   return (
     <ApolloProvider client={client}>
