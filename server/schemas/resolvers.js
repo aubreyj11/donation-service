@@ -16,7 +16,7 @@ const resolvers = {
         throw new AuthenticationError('Not logged in');
       }
     },
-
+  
   Mutation: {
      // Resolver for the createPaymentIntent mutation setting up stripe payments
     createPaymentIntent: async (parent, { amount, userId }, context) => {
@@ -27,11 +27,11 @@ const resolvers = {
           currency: 'usd',
           payment_method_types: ['card'],
         });
-  
+      
         // Save the donation details to the database
         const donation = new Donation({ amount, userId });
         const savedDonation = await donation.save();
-  
+      
         return { ...savedDonation._doc, clientSecret: paymentIntent.client_secret };
       } catch (error) {
         console.error('Error occurred while creating payment intent:', error);
