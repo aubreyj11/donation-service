@@ -66,6 +66,7 @@ function App() {
               path="/charities"
               element={<CharityPage />}
             />
+            {/* if use is not logged in will redirect from profile page to login page */}
             <Route
               path="/profile"
               element= {                 
@@ -90,7 +91,7 @@ function App() {
             />
             <Route
               path="/donation"
-              element={<Donation/>}
+              element={ loggedIn ? <Donation /> : <Navigate replace to ={"/login"}/>}
             />
           </Routes>
             <Footer />

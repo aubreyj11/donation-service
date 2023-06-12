@@ -49,10 +49,11 @@ export default class Navbar extends Component {
                     Charities
                     </Link>
                 </Menu.Item>
+
                 <Menu.Item
                     as={NavLink} exact to="/donation"
                     name='donation'
-                    active={activeItem === 'Profile'}
+                    active={activeItem === 'Donation'}
                     onClick={this.handleItemClick}
                 >
                     <Link to="/donation">
