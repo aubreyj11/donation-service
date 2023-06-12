@@ -20,71 +20,37 @@ const DonationPage = () => {
   const user = data?.getUser || {};
   const [showCheckoutForm, setShowCheckoutForm] = useState(false); // State variable to track if the button has been clicked
 
-  // Function to handle the donation process
-  const handleDonate = async () => {
-    setShowCheckoutForm(true);
-    try {
-       // Create a payment intent with the provided donation amount and user ID
-      const data = await createPaymentIntent({
-        variables: { amount: parseFloat(donationAmount), userId: user.name },
-      });
-      console.log(data);
-       // Retrieve the client secret from the response
-      const { clientSecret } = data.data.createPaymentIntent;
-        // Confirm the card payment using Stripe.js
-      const stripe = await stripePromise;
-      const { error } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: {
-            number: '4242424242424242',
-            exp_month: 12,
-            exp_year: 2023,
-            cvc: '123',
-          },
-        },
-      });
 
-       // Handle the payment success or failure
-      if (error) {
-        console.error('Payment failed:', error.message);
-        alert('Payment failed. Please try again.');
-      } else {
-        console.log('Payment succeeded!');
-        alert('Thank you for your donation! It is much appreciated!');
-      }
-    } catch (error) {
-      console.error('Error occurred while processing donation:', error);
-      alert('An error occurred while processing your donation. Please try again later.');
-    }
+  const showCheckout = async () => {
+    setShowCheckoutForm(true);
   };
 
   return (
     <Container className='text-center'>
-      <h1 style={{ fontSize: '5rem', marginBottom: '1.5rem' }}>Donation Page</h1>
+      <div style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Helping in anyway you can is always greatly appreciated even without food donations we have a long way to go!</div>
+      <h1 style={{ fontSize: '6rem', marginBottom: '1.5rem' }}>Donation Page</h1>
       
-      <Form>
-        <Form.Field>
-          <Input
-            type="number"
-            label='Enter Donation Amount'
-            labelPosition='left'
-            placeholder="Enter your donation amount"
-            value={donationAmount}
-            onChange={(e) => setDonationAmount(e.target.value)}
-            size='large'
-            />
-        </Form.Field>
-        {!showCheckoutForm && ( // Render the button only if the form is not shown
-          <Button primary onClick={handleDonate} style={{ fontSize: '1.2rem', padding: '0.75rem 1rem' }}>
+      <div>
+        <Input
+          type="number"
+          
+          labelPosition='left'
+          placeholder="Donation amount"
+          value={donationAmount}
+          onChange={(e) => setDonationAmount(e.target.value)}
+          size='large'
+        />
+        {!showCheckoutForm && (
+          <Button primary onClick={showCheckout} style={{ fontSize: '1.2rem', padding: '0.75rem 1rem' }}>
             Donate
           </Button>
         )}
-        {showCheckoutForm && ( // Render the CheckoutForm only if the button is clicked
-          <Elements stripe={stripePromise}>
-            <CheckoutForm />
-          </Elements>
-        )}
-      </Form>
+      </div>
+      {showCheckoutForm && (
+        <Elements stripe={stripePromise}>
+            <CheckoutForm createPaymentIntent={createPaymentIntent} user={user} />
+        </Elements>
+      )}
     </Container>
   );
 };
