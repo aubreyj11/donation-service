@@ -30,6 +30,7 @@ const Profile = () => {
   const user = data?.getUser || {};
 
   useEffect(() => {
+    // Load the saved count from localStorage when the component mounts
     const savedCount = localStorage.getItem('count');
     if (savedCount) {
       setCount(parseInt(savedCount));
@@ -37,19 +38,20 @@ const Profile = () => {
   }, []);
 
   const handleClick = () => {
+    // Increment the count and update the chosen avatar image
     if (count < 6) {
       const newCount = count + 1;
       setCount(newCount);
       localStorage.setItem('count', newCount);
     } else if (count=== 6){
+    // Reset the count to 1 when it reaches 6
       setCount(1);
     }
     console.log(count);
     changePhoto();
   };
   
-  
-    
+    // Render the profile component
   return (
     <section style={{ backgroundColor: '#eee' }}>
       <MDBContainer className="py-5" style={{alignItems:"center"}}>
