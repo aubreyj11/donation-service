@@ -7,22 +7,31 @@ import { GET_USER } from '../utils/queries';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from '../components/CheckoutForm/CheckoutForm';  
 
+// Load the Stripe library with your Stripe publishable key
 const stripePromise = loadStripe('pk_test_51NGsraCQkZ4sTLVlAxyxwqDcGmDeKmoI6226SLNoBt9Qe9gcYiRUWi4CTIXJ4pqqO8Wp6uITa49l7XFGbvAfTDBz00jxdaatRC');
 
 const DonationPage = () => {
+  
+  // State variables to store donation amount and toggle the display of the checkout form
   const [donationAmount, setDonationAmount] = useState('');
+  // Mutation and query hooks for executing GraphQL operations
   const [createPaymentIntent] = useMutation(CREATE_PAYMENT_INTENT);
   const { data } = useQuery(GET_USER);
   const user = data?.getUser || {};
   const [showCheckoutForm, setShowCheckoutForm] = useState(false); // State variable to track if the button has been clicked
 
+  // Function to handle the donation process
   const handleDonate = async () => {
+    setShowCheckoutForm(true);
     try {
+       // Create a payment intent with the provided donation amount and user ID
       const data = await createPaymentIntent({
         variables: { amount: parseFloat(donationAmount), userId: user.name },
       });
       console.log(data);
+       // Retrieve the client secret from the response
       const { clientSecret } = data.data.createPaymentIntent;
+        // Confirm the card payment using Stripe.js
       const stripe = await stripePromise;
       const { error } = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -35,6 +44,7 @@ const DonationPage = () => {
         },
       });
 
+       // Handle the payment success or failure
       if (error) {
         console.error('Payment failed:', error.message);
         alert('Payment failed. Please try again.');
@@ -46,10 +56,6 @@ const DonationPage = () => {
       console.error('Error occurred while processing donation:', error);
       alert('An error occurred while processing your donation. Please try again later.');
     }
-  };
-
-  const handleButtonClick = () => {
-    setShowCheckoutForm(true); // Set the state to true when the button is clicked
   };
 
   return (
@@ -69,7 +75,7 @@ const DonationPage = () => {
             />
         </Form.Field>
         {!showCheckoutForm && ( // Render the button only if the form is not shown
-          <Button primary onClick={handleButtonClick} style={{ fontSize: '1.2rem', padding: '0.75rem 1rem' }}>
+          <Button primary onClick={handleDonate} style={{ fontSize: '1.2rem', padding: '0.75rem 1rem' }}>
             Donate
           </Button>
         )}
