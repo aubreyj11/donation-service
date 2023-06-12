@@ -9,7 +9,7 @@ function Home() {
   return (
       <Grid columns={2} stackable padded='horizontally' centered>
         <Grid.Column width={6} verticalAlign='middle'>
-          <Image src='food-Box.jpg' fluid />
+          <Image src='assets/food-box.jpg' fluid />
         </Grid.Column>
         <Grid.Column width={8}>
           <Header as={'h2'} style={{fontSize:'36px'}} textAlign="center">Our Mission & Vision</Header>
