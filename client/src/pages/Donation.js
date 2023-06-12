@@ -11,6 +11,7 @@ import CheckoutForm from '../components/CheckoutForm/CheckoutForm';
 const stripePromise = loadStripe('pk_test_51NGsraCQkZ4sTLVlAxyxwqDcGmDeKmoI6226SLNoBt9Qe9gcYiRUWi4CTIXJ4pqqO8Wp6uITa49l7XFGbvAfTDBz00jxdaatRC');
 
 const DonationPage = () => {
+  
   // State variables to store donation amount and toggle the display of the checkout form
   const [donationAmount, setDonationAmount] = useState('');
   // Mutation and query hooks for executing GraphQL operations
@@ -21,6 +22,7 @@ const DonationPage = () => {
 
   // Function to handle the donation process
   const handleDonate = async () => {
+    setShowCheckoutForm(true);
     try {
        // Create a payment intent with the provided donation amount and user ID
       const data = await createPaymentIntent({
@@ -56,11 +58,6 @@ const DonationPage = () => {
     }
   };
 
-   // Function to handle the button click and show the checkout form
-  const handleButtonClick = () => {
-    setShowCheckoutForm(true); // Set the state to true when the button is clicked
-  };
-
   return (
     <Container className='text-center'>
       <h1 style={{ fontSize: '5rem', marginBottom: '1.5rem' }}>Donation Page</h1>
@@ -78,7 +75,7 @@ const DonationPage = () => {
             />
         </Form.Field>
         {!showCheckoutForm && ( // Render the button only if the form is not shown
-          <Button primary onClick={handleButtonClick} style={{ fontSize: '1.2rem', padding: '0.75rem 1rem' }}>
+          <Button primary onClick={handleDonate} style={{ fontSize: '1.2rem', padding: '0.75rem 1rem' }}>
             Donate
           </Button>
         )}
