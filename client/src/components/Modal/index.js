@@ -9,7 +9,7 @@ import { Button, Header, Modal, Menu, Input, Form, TextArea } from 'semantic-ui-
 function ReactModal() {
 
     const { data } = useQuery(GET_USER);
-    const [addFoodDonation] = useMutation(ADD_FOOD_DONATION);
+    const [addFoodDonation] = useMutation(ADD_FOOD_DONATION,{ refetchQueries: [{ query: GET_USER }]}); //calls mutation to add food donation to database and the uses get user to re-render any page that uses  the new information
     const user = data?.getUser || {};
     const [errorMessage, setErrorMessage] = React.useState("");
     const [formState , setFormState] = React.useState({ date: '', time: '', address: '', city: '', zip: '', comment: ''})
@@ -17,6 +17,7 @@ function ReactModal() {
     const [open, setOpen] = React.useState(false)
     const [badDate, setBadDate] = React.useState(false);
 
+    //if the input thats interacted with has a length of 0 this will create an error state and message
     function handleBlank(e) {
       if (!e.target.value.length) {
         setErrorMessage(`${e.target.name} is required.`);
@@ -28,6 +29,7 @@ function ReactModal() {
       }
     }      
 
+    //updates the formstate with the values input
     const handleChange = (event) => {
       const { name, value } = event.target;
       setFormState({
@@ -51,10 +53,9 @@ function ReactModal() {
       }else{
         setBadDate(false);
       }
-      
-      console.log(formState)
     };
 
+    //form submit when button is pressed won't submit when its in an error state
     const handleFormSubmit = async (event) => {
       event.preventDefault();
      if(!formState.date || !formState.time || !formState.address || !formState.city || !formState.zip || !formState.comment){
