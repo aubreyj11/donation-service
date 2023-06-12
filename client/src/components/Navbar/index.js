@@ -18,7 +18,7 @@ export default class Navbar extends Component {
         const { activeItem } = this.state
 
         return(
-            <Menu secondary pointing style={{margin: '0px 0px 0px 15px'}}>
+            <Menu secondary pointing stackable>
                 <Menu.Item 
                     as={NavLink} exact to="/"
                     name='home'
