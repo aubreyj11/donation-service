@@ -82,7 +82,8 @@ const SignupForm = (props) => {
       };
 
 return ( 
-  <Form onSubmit={handleFormSubmit} size="huge">
+  // Semantic UI form for signup
+  <Form onSubmit={handleFormSubmit} size="large">
     <Form.Field required>
       <label style={{ margin: '0px 0px 10px 5px'}}>Name</label>
       <input 
@@ -163,7 +164,7 @@ return (
 							<p className="error-text" style={{margin: "0px 0px 10px 0px", border: "solid", backgroundColor: "#fa87b5", borderRadius: "5px", height: "40px", color: "red", fontWeight: "bold"}}>{errorMessage}</p>
 						</div>
 					)}
-    <Button type='submit'>Submit</Button>
+    <div style={{ textAlign:'center' }}> <Button type='submit'>Submit</Button></div>
   </Form>
     )
 }

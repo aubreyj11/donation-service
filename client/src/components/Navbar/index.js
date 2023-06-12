@@ -74,6 +74,7 @@ export default class Navbar extends Component {
                     active={activeItem === 'login'}
                     position='right'
                     >
+                    {/* If logged in Menu.Item = 'Logout', else Menu.Item = 'Log In' */}
                         {loggedIn ? (
                             <Link to = "/" onClick={() => AuthService.logout()}>Log Out</Link>
                         ) : (

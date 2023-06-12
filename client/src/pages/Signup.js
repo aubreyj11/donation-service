@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SignupForm from '../components/SignupForm';
+import { Container, Header } from 'semantic-ui-react';
 
 
 function Signup(props) {
@@ -9,12 +10,11 @@ function Signup(props) {
       <div className="container my-1">
         <Link to="/login">← Go to Login</Link>
       </div>
-
-      <h2 style={{textAlign: "center"}}>Sign Up</h2>
-      
-      <div style={{ margin: '20px', padding: '0px 20px 0px 20px' }}>
+    {/* Container centers and pads signup content */}
+      <Container>      
+      <Header as='h2' textAlign='center' content='Sign Up' />
         <SignupForm/>
-      </div>
+      </Container>
     </>
   );
 }

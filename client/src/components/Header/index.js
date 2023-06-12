@@ -8,10 +8,12 @@ import { Link } from 'react-router-dom'
 
 
 const HeaderContainer = (props) => {
+  // Use AuthService to check if user is logged in
   const loggedIn = AuthServices.loggedIn();
+  // Get user data from query
   const { data } = useQuery(GET_USER);
+  // Set user to empty object if no data
   const user = data?.getUser || {};
-  console.log(user);
   return (
   <>
    <Grid style={{marginLeft: "5px", marginRight: "5px"}} stackable>
@@ -31,8 +33,9 @@ const HeaderContainer = (props) => {
         <Grid.Column width={4} floated='right'>
           <Link to="/profile">
           {/* Avatar Header */}
-            <Header as={'h5'} >
-              <Header.Content className='headerStatus'>
+            <Header as={'h5'} textAlign='right' size='medium' style={{ paddingTop:'10px' }}>
+              <Header.Content>
+                {/* If logged in, display username, else display 'Guest' */}
                 Logged in as <span style={{color: 'blue'}}>{loggedIn ? user.name : 'Guest'}</span>
               </Header.Content>
               <Image src={user.avatar} className='avaSmall' avatar size='small' />
