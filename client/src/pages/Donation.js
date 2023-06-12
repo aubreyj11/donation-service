@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { Button, Container, Form, Input, Label } from 'semantic-ui-react';
+import { Button, Container, Form, Input } from 'semantic-ui-react';
 import { loadStripe } from '@stripe/stripe-js';
 import { CREATE_PAYMENT_INTENT } from '../utils/mutations';
 import { GET_USER } from '../utils/queries';

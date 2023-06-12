@@ -18,7 +18,7 @@ const UserPickupTable= (props) => {
           </tr>
         </thead>
         <tbody>
-            {props.pickups?.map((item, index) => (
+            {props.pickups?.map((item, index) => ( //checks to see is there is a pickups which i spassed in through the props and maps them to the table below if there is
                 <tr key={index}>
                     <td>
                         {item.date}
