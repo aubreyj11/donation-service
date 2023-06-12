@@ -38,7 +38,4 @@ View our deployed app [HERE](https://sleepy-plateau-67622.herokuapp.com/).
 ## Usage
 To use this application, users simply need to visit the deployed link! Once signed in, they will see options of charities that are in need of donations and can schedule deliveries from there. <br>
 
-![App Screenshot](client/src/components/images/readmePhoto.png)
-
-
-<br>
+![App Screenshot](client/public/assets/homepage-img.png)
