@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ createPaymentIntent, user }) => {
+  const cardElementRef = useRef(null);
   const [errorMessage, setErrorMessage] = useState('');
   const stripe = useStripe();
   const elements = useElements();
-
+  const [donationAmount, setDonationAmount] = useState('');
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -25,6 +27,40 @@ const CheckoutForm = () => {
       return;
     }
 
+    try {
+      // Create a payment intent with the provided donation amount and user ID
+      const { data } = await createPaymentIntent({
+        amount: parseFloat(donationAmount),
+        userId: user,
+      });
+     console.log(data);
+      // Retrieve the client secret from the response
+     const { clientSecret } = data.data.createPaymentIntent;
+       // Confirm the card payment using Stripe.js
+    //  const stripe = await stripePromise;
+     const confirmedPayment = await stripe.confirmCardPayment(clientSecret, {
+       payment_method: {
+         card: {
+           number: '4242424242424242',
+           exp_month: 12,
+           exp_year: 2023,
+           cvc: '123',
+         },
+       },
+     });
+
+      // Handle the payment success or failure
+     if (confirmedPayment.error) {
+       console.error('Payment failed:', confirmedPayment.error.message);
+       alert('Payment failed. Please try again.');
+     } else {
+       console.log('Payment succeeded!');
+       alert('Thank you for your donation! It is much appreciated!');
+     }
+   } catch (error) {
+     console.error('Error occurred while processing donation:', error);
+     alert('An error occurred while processing your donation. Please try again later.');
+   }
   };
 
   return (
@@ -74,6 +110,7 @@ const CheckoutForm = () => {
         </div>
       )}
       <button
+      ref={cardElementRef}
         type="submit"
         disabled={!stripe}
         style={{
