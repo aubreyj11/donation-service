@@ -42,8 +42,10 @@ const userSchema = new Schema({
         type: String,
         default: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1.webp"
      },
+     //food donation pickups when created will be pushed into this array
      foodDonations: [FoodDonation.schema]
      ,
+     //donations when created (once they get made operational) will be pushed into this array 
      donations: [Donation.schema]
 
 });

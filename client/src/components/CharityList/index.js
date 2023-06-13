@@ -2,8 +2,10 @@ import React from 'react'
 import { Container, Header, List, Grid, Image, Divider, Button } from 'semantic-ui-react'
 import ReactModal from '../Modal/index.js'
 import AuthService from "../../utils/auth";
+import { useNavigate } from 'react-router-dom';
 
 const CharityList = () => {
+    const navigate = useNavigate();
     // Use AuthService to check if user is logged in
     const loggedIn = AuthService.loggedIn();
   return (
@@ -14,7 +16,7 @@ const CharityList = () => {
     </Header>
     {/* if loggedIn, display donation signup modal, else button redirects to login */}
     {loggedIn ? (
-        <div className='mx-auto'><ReactModal /></div> ) : (<div className='mx-auto'><Button href='/login'>Schedule Pickup</Button></div>
+        <div className='mx-auto'><ReactModal /></div> ) : (<div className='mx-auto'><Button onClick={()=>{navigate('/login')}}>Schedule Pickup</Button></div>
          )}
         <Divider />
     <Container style={{margin: "0px 0px 30px 0px"}}>
